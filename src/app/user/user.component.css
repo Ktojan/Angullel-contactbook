@@ -1,0 +1,71 @@
+.user {
+    display: flex;
+    flex-shrink: 0;
+    padding: 0 24px;
+    margin-top: 24px;
+}
+
+.user__avatar {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border: 1px solid white;
+    border-radius: 50%;
+    background: center/100% no-repeat;
+    background-image: url("../../assets/img/hevery.jpg");
+}
+
+.user__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    align-items: flex-start;
+    margin-left: 16px;
+    overflow: hidden;
+}
+
+.user__name {
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+    .user {
+        margin-top: 16px;
+    }
+}
+
+.user__name {
+    color: goldenrod;
+}
+
+/*white*/
+.user__log-out {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.5s;
+}
+
+.user__log-out:hover, .user__log-out:focus {
+    color: white;
+}
+
+.user__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.5s;
+}
+
+.user__menu:hover, .user__menu:focus {
+    color: white;
+}
+
+.user__menu svg {
+    width: 16px;
+}
