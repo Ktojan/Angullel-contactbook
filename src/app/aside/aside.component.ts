@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-aside',
@@ -7,13 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsideComponent implements OnInit {
 
-
-  constructor() { }
+    constructor() { }
 
   ngOnInit() {
-  }
-
-  showContactForm() {
-    console.log('showContactForm emitted by Create click');
   }
 }

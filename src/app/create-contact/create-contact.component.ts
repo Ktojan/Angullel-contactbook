@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-create-contact',
@@ -7,15 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CreateContactComponent implements OnInit {
 
-  @Output() showCForm = new EventEmitter();
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
-  onClick()
-  {
-    alert('Create contact clicked');
-    this.showCForm.emit();
-  }
 }

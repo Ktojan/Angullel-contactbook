@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ContactsService } from '../shared/contacts.service';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-contact-view',
@@ -6,11 +8,26 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./contact-view.component.css']
 })
 export class ContactViewComponent implements OnInit {
-  @Input() actualContact: string;
+    contacts;
+    actualContact: Object;
 
-  constructor() { }
+    constructor(private contactsService: ContactsService,
+                private activatedRoute:ActivatedRoute) {
+    }
 
   ngOnInit() {
+      this.contacts = this.contactsService.getContacts();
+      this.grabActualContact(this.activatedRoute.snapshot.params['id']);
+      console.log(this.actualContact);
   }
 
+  grabActualContact(surname) {
+      let self = this;
+      this.contacts.forEach(function (item) {
+          if (item['surname'] === surname) {
+              self.actualContact = item;
+              return;
+          }
+      });
+  }
 }

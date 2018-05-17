@@ -1,3 +1,27 @@
+
+Версия май-17
+Функционал:
+- разбиение на компоненты с заполнением html/css, два уровня вложенности компонентов
+- использование сервисов для хранения контактов, категорий и юзеров (только логина)
+- роутинг по основным кнопкам (не срабатывает при переключении от одной категории к другой)
+- захват имени категории из адресной строки при роутинге
+
+
+Component Hierarchy
+
+ AppComponent
+   AsideComponent
+ 	UserComponent
+ 	SearchComponent
+	SideMenuComponent
+ 	CreateContactComponent
+   MainComponent
+ 	ContactsComponent
+	ContactViewComponent
+ 	ContactFormComponent
+
+
+
 # AngullelContactbook
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.2.

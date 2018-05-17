@@ -1,36 +1,17 @@
 <main class="main-content">
     <!-- Content header -->
-    <header class="main-content__header">
-        <!-- Open mobile menu button -->
-        <button class="mobile-menu">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path fill="currentColor"
-                      d="M501.333 96H10.667C4.779 96 0 100.779 0 106.667s4.779 10.667 10.667 10.667h490.667c5.888 0 10.667-4.779 10.667-10.667S507.221 96 501.333 96zm0 149.333H10.667C4.779 245.333 0 250.112 0 256s4.779 10.667 10.667 10.667h490.667c5.888 0 10.667-4.779 10.667-10.667s-4.78-10.667-10.668-10.667zm0 149.334H10.667C4.779 394.667 0 399.445 0 405.333 0 411.221 4.779 416 10.667 416h490.667c5.888 0 10.667-4.779 10.667-10.667-.001-5.888-4.78-10.666-10.668-10.666z"/>
-            </svg>
-        </button>
-
-        <!-- Header title -->
-        <span class="main-content__header-text">All contacts of Selected User</span>
-
-        <!-- Dots menu -->
-        <button class="main-content__header-menu">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612">
-                <path fill="currentColor"
-                      d="M55.636 250.364C24.907 250.364 0 275.27 0 306c0 30.73 24.907 55.636 55.636 55.636S111.273 336.73 111.273 306c0-30.73-24.907-55.636-55.637-55.636zm259.637 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.907 55.636 55.636 55.636 30.729 0 55.636-24.905 55.636-55.636 0-30.73-24.906-55.636-55.636-55.636zm241.091 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.906 55.636 55.636 55.636C587.093 361.636 612 336.73 612 306c0-30.73-24.907-55.636-55.636-55.636z"/>
-            </svg>
-        </button>
-    </header>
-
-    <button class="crutch" (click)="toggleContactsGrid()">Show/hide Contacts-grid</button>  <!--*todo delete-->
-    <app-contacts
+    <router-outlet></router-outlet>
+   <!-- <app-contacts
             *ngIf="!hideContactsGrid"
-            (click)="showContactViewForm(); showFull($event)"></app-contacts>
+            (click)="showContactViewForm(); showFull($event); toggleContactsGrid()"></app-contacts>
 
     <app-contact-view
+            *ngIf="!hideContactViewForm"
+            [hideContactViewForm]="this.hideContactViewForm"
             [actualContact]="this.actualContact"
-            *ngIf="!hideContactViewForm"></app-contact-view>
-
-    <button class="crutch" (click)="toggleContactForm()">Show/hide Add contact form</button>  <!--*todo delete-->
+            (closeButtonClick)="this.hideContactView(); toggleContactsGrid()"></app-contact-view>
+    <button class="crutch" (click)="toggleContactForm()">Show/hide Add contact form</button>  &lt;!&ndash;*todo delete&ndash;&gt;
     <app-contact-form
-            *ngIf="!hideContactForm"></app-contact-form>
+            *ngIf="!hideContactForm"></app-contact-form>-->
+
 </main>

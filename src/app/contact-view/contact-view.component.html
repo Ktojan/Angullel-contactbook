@@ -1,37 +1,47 @@
-<section class="contact-view">
+
+<section class="contact-view" >
   <section class="contact-view__wrapper">
-    <button class="contact-view__close-button">
+    <button class="contact-view__close-button"
+            [routerLink]="['/contacts']">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42">
         <path fill="currentColor" d="M42 20H22V0h-2v20H0v2h20v20h2V22h20z"/>
-
       </svg>
     </button>
   </section>
 
   <section class="contact-view__fields-box">
     <section class="contact-view__main-info">
-      <div class="contact-view__avatar"></div>
+        <div class="contact-view__avatar" [ngStyle]="{'background-image': 'url(' + this.actualContact.url + ')'}"> </div>
 
-      <section class="contact-view__fields-wrapper">
+        <section class="contact-view__fields-wrapper">
         <section class="contact-view__name-wrapper">
-          <span class="contact-view__name">{{this.actualContact}} </span>
-          <!--<span class="contact-view__name"></span>-->
+          <span class="contact-view__name">{{this.actualContact.name}} </span> &nbsp;
+          <span class="contact-view__name">{{this.actualContact.surname}}</span>
         </section>
-        <div class="contact-view__description">Friend</div>
+        <div class="contact-view__description">{{this.actualContact.desc}}</div>
       </section>
     </section>
 
-    <div class="contact-view__field">
-      <span class="contact-view__field-name">Birthday</span>
-      <span class="contact-view__field-text">18.1.1958</span>
+      <div class="contact-view__field" *ngIf="this.actualContact.birthday">
+          <span class="contact-view__field-name">Birthday</span>
+          <span class="contact-view__field-text">{{this.actualContact.birthday}}</span>
+      </div>
+    <div class="contact-view__field" *ngIf="this.actualContact.email">
+      <span class="contact-view__field-name" >Email</span>
+      <span class="contact-view__field-text">{{this.actualContact.email}}</span>
     </div>
-    <div class="contact-view__field">
-      <span class="contact-view__field-name">Email</span>
-      <span class="contact-view__field-text">bogatyrev@yahoo.com</span>
+    <div class="contact-view__field" *ngIf="this.actualContact.phone">
+      <span class="contact-view__field-name" >Phone</span>
+      <span class="contact-view__field-text">{{this.actualContact.phone}}</span>
     </div>
-    <div class="contact-view__field">
-      <span class="contact-view__field-name">Phone</span>
-      <span class="contact-view__field-text">0681811990</span>
-    </div>
+      <div class="contact-view__field" *ngIf="this.actualContact.information">
+          <span class="contact-view__field-name">Information</span>
+          <span class="contact-view__field-text">{{this.actualContact.information}}</span>
+      </div>
+      <div class="contact-view__field" *ngIf="this.actualContact.facebook || this.actualContact.instagram">
+          <span class="contact-view__field-name">Social media</span>
+          <span class="contact-view__field-text">{{this.actualContact.facebook}}</span>&nbsp;
+          <span class="contact-view__field-text">{{this.actualContact.instagram}}</span>
+      </div>
   </section>
 </section>

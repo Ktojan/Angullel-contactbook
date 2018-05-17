@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from '../shared/categories.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-menu.component.css']
 })
 export class SideMenuComponent implements OnInit {
+    categories: string[];
 
-  constructor() { }
+  constructor(private categoriesService:CategoriesService) { }
 
   ngOnInit() {
+      this.categories = this.categoriesService.getCategories();
   }
 
 }

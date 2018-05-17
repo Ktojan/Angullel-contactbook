@@ -45,7 +45,6 @@
     border-radius: 50%;
     margin-right: 16px;
     background-size: 100%;
-    background-image: url("../../assets/img/bogatyrev.jpg");
 }
 .contact-view__fields-wrapper {
     display: flex;
@@ -56,6 +55,11 @@
     flex-wrap: wrap;
     margin-bottom: 8px;
     font-weight: 800; }
+.contact-view__description {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+     }
 .contact-view__field {
     display: flex;
     width: 100%;

@@ -1,34 +1,33 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { ContactsService } from '../shared/contacts.service';
+
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+    selector: 'app-main',
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.css']
 })
+
 export class MainComponent implements OnInit {
+    contacts: Object[];
 
-  hideContactsGrid = false;
-  hideContactViewForm = true;
-  hideContactForm = true;
-  actualContact: string;
+    constructor(private contactsService: ContactsService) { }
 
-  constructor() { }
+    ngOnInit() {
+        this.contacts = this.contactsService.getContacts();
+    }
 
-  ngOnInit() {
-  }
 
-  showFull(event) {
-    console.log(event.target.innerHTML);
-   this.actualContact = event.target.innerHTML;
-  }
+    showFull(event) {
+       /* let selected;
+        this.contacts.forEach(function (item) {
+            if (item['surname'] === event.target.innerHTML) {
+                selected = item;
+                return
+            }  // проблема с контекстом при попытке передать здесь this.actualContact = item
+        });
+        this.actualContact = selected;*/
+    }
 
-  toggleContactsGrid() {
-    this.hideContactsGrid = !this.hideContactsGrid;
-  }
-  showContactViewForm() {
-    if (this.hideContactViewForm) this.hideContactViewForm = false;
-  }
-  toggleContactForm() {
-    this.hideContactForm = !this.hideContactForm;
-  }
+
 }

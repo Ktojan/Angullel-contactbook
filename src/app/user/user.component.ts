@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-user',
@@ -6,16 +7,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  @Input('number') title: string;
+    user: string;
 
-  @Output() click = new EventEmitter();
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+      this.user = this.userService.getUsername();
+      console.log(this.user);
   }
 
-  alert() {
-  alert('click');
-  this.click.emit();
-  }
+
 }
