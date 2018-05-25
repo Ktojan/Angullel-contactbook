@@ -1,8 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import {CategoriesService} from './categories.service';
+
 
 @Injectable()
-export class ContactsService {
+export class ContactsService implements OnInit {
 
+    categories = ['Family', 'Friends', 'Work'];
     CONTACTS = [
     {
         surname: 'Bogatyrev',
@@ -67,7 +70,7 @@ export class ContactsService {
         {
             surname: 'Hopkins',
             name: 'Sir Philip Anthony',
-            desc: 'old friend',
+            desc: 'friend',
             url: '../../assets/img/hopkins.jpg',
             phone: '6666666',
             email: '',
@@ -85,7 +88,7 @@ export class ContactsService {
         {
             surname: 'Marceau',
             name: 'Sophie',
-            desc: 'sister-in-law',
+            desc: 'sister',
             url: '../../assets/img/marso.jpg',
             phone: '',
             email: 'Marceau@gmail.com',
@@ -107,8 +110,49 @@ export class ContactsService {
             information: 'Утомленный Михалковым'
         }
 ];
+
+    constructor(private categoriesService: CategoriesService) {
+    }
+
+    ngOnInit() {
+        //this.categories = this.categoriesService.getCategories();
+        this.addCategoryByDescription();
+    }
+
     getContacts() {
+        this.addCategoryByDescription();
         return this.CONTACTS;
     }
 
+
+    addCategoryByDescription(): void {
+
+        this.CONTACTS.forEach(function (item) {
+            let cat = [];
+            if (item['categories'] === undefined) {
+            switch (item['desc']) {
+                case 'uncle':
+                case 'sister': {
+                    cat.push('Family');
+                    break;
+                }
+                case 'friend': {
+                    cat.push('Friends');
+                    break;
+                }
+                case 'coworker': {
+                    cat.push('Work');
+                    break;
+                }
+            };
+            item['categories'] = cat;
+            console.log(item);
+               /* if (item['desc'].indexOf(variant) !== -1) {  // например в 'sister-in-law' содержится 'sister'
+                    if (self.categoryContacts.indexOf(item) === -1) // проверка, что этот элемент не был добавлен
+                        self.categoryContacts.push(item);
+                }*/
+            }
+        });
+
+    }
 }

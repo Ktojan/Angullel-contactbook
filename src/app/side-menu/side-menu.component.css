@@ -3,14 +3,22 @@
     flex-direction: column;
     flex-grow: 1;
     padding: 0;
-    margin: 24px 0 0; }
+    margin: 24px 0 0;
+}
+
 .side-menu__item {
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+}
+
 .side-menu__item:not(:last-child) {
-    margin-bottom: 16px; }
+    margin-bottom: 16px;
+}
+
 .side-menu__item--active .side-menu__item {
-    flex-grow: 1; }
+    flex-grow: 1;
+}
+
 .side-menu__item-button {
     flex-shrink: 0;
     width: 100%;
@@ -21,23 +29,30 @@
     letter-spacing: 1.5px;
     text-align: left;
     transition: color 0.5s;
-    color: rgba(255, 255, 255, 0.5); }
+    color: rgba(255, 255, 255, 0.5);
+}
+
 .side-menu__item-button:hover, .side-menu__item-button:focus,
 .side-menu__item--active .side-menu__item-button {
-    color: #8992CA; }
+    color: #8992CA;
+}
 
 .items-box {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    /*overflow: scroll;*/
-    display: none; }
+    overflow-y: scroll; /* *todo не работает скролл */
+}
+
 .side-menu__item--active .items-box {
-    display: flex; }
+    display: flex;
+}
 
 .groups-list {
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+}
+
 .groups-list__item {
     flex-shrink: 0;
     position: relative;
@@ -45,7 +60,9 @@
     padding: 0 24px;
     font-size: 16px;
     text-align: left;
-    color: white; }
+    color: white;
+}
+
 .groups-list__item:before {
     content: '';
     position: absolute;
@@ -56,13 +73,18 @@
     border-left: 3px solid #10b1df;
     opacity: 0;
     background: linear-gradient(to right, rgba(127, 142, 218, 0.2), transparent);
-    transition: 0.5s; }
+    transition: 0.5s;
+}
+
 .groups-list__item:hover:before, .groups-list__item:focus:before, .groups-list__item--active:before {
-    opacity: 1; }
+    opacity: 1;
+}
 
 .bdays-list {
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+}
+
 .bdays-list__item {
     display: flex;
     justify-content: space-between;
@@ -72,17 +94,26 @@
     font-size: 16px;
     text-align: left;
     transition: color 0.5s;
-    color: rgba(255, 255, 255, 0.5); }
+    color: rgba(255, 255, 255, 0.5);
+}
+
 .bdays-list__item:hover, .bdays-list__item:focus {
-    color: white; }
+    color: white;
+}
+
 .bdays-list__item-wrapper {
     display: flex;
     flex-direction: column;
-    overflow: hidden; }
+    overflow: hidden;
+}
+
 .bdays-list__item-name {
     max-width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap; }
+    white-space: nowrap;
+}
+
 .bdays-list__item-age, .bdays-list__item-date {
-    font-size: 12px; }
+    font-size: 12px;
+}

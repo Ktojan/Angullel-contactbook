@@ -1,15 +1,21 @@
 .create-contact {
     flex-shrink: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.5);
-    margin: 24px 24px 0; }
+    margin: 24px 24px 0;
+}
+
 .create-contact__button {
     display: flex;
     align-items: center;
     padding: 8px 24px 8px 0;
     font-size: 16px;
-    color: white; }
+    color: white;
+}
+
 .create-contact__button:hover .create-contact__text, .create-contact__button:focus .create-contact__text {
-    border-bottom-color: white; }
+    border-bottom-color: white;
+}
+
 .create-contact__icon {
     display: flex;
     justify-content: center;
@@ -19,10 +25,15 @@
     border-radius: 50%;
     background: #10B1DF;
     color: white;
-    margin-right: 16px; }
+    margin-right: 16px;
+}
+
 .create-contact__icon svg {
     width: 16px;
-    height: 16px; }
+    height: 16px;
+}
+
 .create-contact__text {
     border-bottom: 1px solid transparent;
-    transition: border 0.5s; }
+    transition: border 0.5s;
+}
