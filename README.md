@@ -6,19 +6,11 @@
 - роутинг по основным кнопкам (не срабатывает при переключении от одной категории к другой)
 - захват имени категории из адресной строки при роутинге
 
-
-Component Hierarchy
-
- AppComponent
-   AsideComponent
- 	UserComponent
- 	SearchComponent
-	SideMenuComponent
- 	CreateContactComponent
-   MainComponent
- 	ContactsComponent
-	ContactViewComponent
- 	ContactFormComponent
+Версия 25 мая
+- вставлена новая версия дизайна
+- выведение дней рождений в левое меню (упрощенный вариант)
+- сервис контакт по полю desc дописывает каждому юзеру категорию (используется сервис категорий)
+- реализовано добавление категорий в компоненте Contacts (упрощенный вариант) 
 
 
 
