@@ -3,16 +3,26 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    margin: 24px 48px; }
+    margin: 24px 48px;
+}
+
 @media (max-width: 1024px) {
     .contact-view {
-        margin: 24px; } }
+        margin: 24px;
+    }
+}
+
 @media (max-width: 450px) {
     .contact-view {
-        margin: 16px; } }
+        margin: 16px;
+    }
+}
+
 .contact-view__button-box {
     display: flex;
-    justify-content: flex-end; }
+    justify-content: flex-end;
+}
+
 .contact-view__edit-button {
     display: flex;
     justify-content: center;
@@ -22,10 +32,14 @@
     border-radius: 50%;
     background: #10b1df;
     color: white;
-    margin-right: 8px; }
+    margin-right: 8px;
+}
+
 .contact-view__edit-button svg {
     width: 16px;
-    height: 16px; }
+    height: 16px;
+}
+
 .contact-view__close-button {
     display: flex;
     justify-content: center;
@@ -34,18 +48,27 @@
     height: 24px;
     border-radius: 50%;
     background: #10b1df;
-    color: white; }
+    color: white;
+}
+
 .contact-view__close-button svg {
     width: 16px;
     height: 16px;
-    transform: rotate(45deg); }
+    transform: rotate(45deg);
+}
+
 .contact-view__main-info {
     display: flex;
     align-items: center;
-    margin-bottom: 24px; }
+    margin-bottom: 24px;
+}
+
 @media (max-width: 767px) {
     .contact-view__main-info {
-        flex-direction: column; } }
+        flex-direction: column;
+    }
+}
+
 .contact-view__avatar {
     flex-shrink: 0;
     width: 150px;
@@ -53,108 +76,189 @@
     border: 1px solid #7a7e81;
     border-radius: 50%;
     margin-right: 16px;
-    background-size: 100%; }
+    background-size: 100%;
+}
+
 @media (max-width: 767px) {
     .contact-view__avatar {
         margin-bottom: 24px;
-        margin-right: 0; } }
+        margin-right: 0;
+    }
+}
+
 .contact-view__main-info-wrapper {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
     flex-direction: column;
-    width: 100%; }
+    width: 100%;
+}
+
 @media (max-width: 767px) {
     .contact-view__main-info-wrapper {
-        text-align: center; } }
+        text-align: center;
+    }
+}
+
 .contact-view__name-wrapper {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 8px;
-    font-weight: 600; }
+    font-weight: 600;
+}
+
 @media (max-width: 767px) {
     .contact-view__name-wrapper {
-        justify-content: center; } }
+        justify-content: center;
+    }
+}
+
 .contact-view__name {
     max-width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap; }
+    white-space: nowrap;
+}
+
 .contact-view__name:not(:last-child) {
-    margin-right: 8px; }
+    margin-right: 8px;
+}
+
 .contact-view__field {
     display: flex;
-    width: 100%; }
+    width: 100%;
+}
+
 .contact-view__field:not(:last-child) {
-    margin-bottom: 24px; }
+    margin-bottom: 24px;
+}
+
 @media (max-width: 767px) {
     .contact-view__field {
-        flex-direction: column; } }
+        flex-direction: column;
+    }
+}
+
 .contact-view__field-name {
     flex-shrink: 0;
     width: 166px;
     padding-right: 16px;
     text-align: right;
     line-height: 32px;
-    font-weight: 600; }
+    font-weight: 600;
+}
+
 @media (max-width: 767px) {
     .contact-view__field-name {
         line-height: 1;
         text-align: left;
-        margin-bottom: 8px; } }
+        margin-bottom: 8px;
+    }
+}
+
 .contact-view__field-text {
-    line-height: 32px; }
+    line-height: 32px;
+}
+
 .contact-view__photos-box {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start; }
+    align-items: flex-start;
+}
+
 @media (max-width: 767px) {
     .contact-view__photos-box {
-        justify-content: center; } }
+        justify-content: center;
+    }
+}
+
 @media (max-width: 340px) {
     .contact-view__photos-box {
         flex-direction: column;
-        align-items: center; } }
+        align-items: center;
+    }
+}
+
 .contact-view__insta-photo {
     width: 150px;
     height: auto;
-    margin-bottom: 8px; }
+    margin-bottom: 8px;
+}
+
 .contact-view__insta-photo:not(:last-child) {
-    margin-right: 8px; }
+    margin-right: 8px;
+}
+
 @media (max-width: 1514px) and (min-width: 1364px) {
     .contact-view__insta-photo:nth-child(5) {
-        margin-right: 0; } }
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 1356px) and (min-width: 1206px) {
     .contact-view__insta-photo:nth-child(4) {
-        margin-right: 0; } }
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 1205px) and (min-width: 1049px) {
     .contact-view__insta-photo:nth-child(3) {
-        margin-right: 0; } }
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 1048px) and (min-width: 1025px) {
     .contact-view__insta-photo:nth-child(2n) {
-        margin-right: 0; } }
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 1024px) and (min-width: 1000px) {
     .contact-view__insta-photo:nth-child(3) {
-        margin-right: 0; } }
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 999px) and (min-width: 833px) {
     .contact-view__insta-photo:nth-child(2n) {
-        margin-right: 0; } }
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 832px) and (min-width: 768px) {
     .contact-view__insta-photo:nth-child(1n) {
-        margin-right: 0; }
+        margin-right: 0;
+    }
+
     .contact-view__insta-photo:last-child {
-        margin-bottom: 0; } }
+        margin-bottom: 0;
+    }
+}
+
 @media (max-width: 767px) and (min-width: 672px) {
     .contact-view__insta-photo:nth-child(4) {
-        margin-right: 0; } }
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 671px) and (min-width: 514px) {
     .contact-view__insta-photo:nth-child(3) {
-        margin-right: 0; } }
+        margin-right: 0;
+    }
+}
+
 @media (max-width: 513px) and (min-width: 340px) {
     .contact-view__insta-photo:nth-child(2n) {
-        margin-right: 0; }
+        margin-right: 0;
+    }
+
     .contact-view__insta-photo:last-child {
-        margin-bottom: 0; } }
+        margin-bottom: 0;
+    }
+}
+
 @media (max-width: 340px) {
     .contact-view__insta-photo:nth-child(1n) {
-        margin-right: 0; } }
+        margin-right: 0;
+    }
+}

@@ -18,7 +18,6 @@ export class ContactViewComponent implements OnInit {
   ngOnInit() {
       this.contacts = this.contactsService.getContacts();
       this.grabActualContact(this.activatedRoute.snapshot.params['id']);
-      console.log(this.actualContact);
   }
 
   grabActualContact(surname) {

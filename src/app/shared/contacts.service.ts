@@ -1,11 +1,11 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable} from '@angular/core';
 import {CategoriesService} from './categories.service';
 
 
 @Injectable()
-export class ContactsService implements OnInit {
+export class ContactsService {
 
-    categories = ['Family', 'Friends', 'Work'];
+    categories = [];
     CONTACTS = [
     {
         surname: 'Bogatyrev',
@@ -17,7 +17,7 @@ export class ContactsService implements OnInit {
         facebook: '',
         instagram: '',
         birthday: '',
-        information: ''
+        information: 'Свой среди своих, чужой среди чужих. Все как положено. '
     },
     {
         surname: 'Weis',
@@ -53,19 +53,19 @@ export class ContactsService implements OnInit {
         facebook: 'facebook.hamatova',
         instagram: '',
         birthday: '',
-        information: ''
+        information: 'Вечно молодая'
     },
     {
         surname: 'Costner',
         name: 'Kevin',
-        desc: 'job, friend',
+        desc: 'job',
         url: '../../assets/img/kostner.jpg',
         phone: '',
         email: 'costner@gmail.com',
         facebook: '',
         instagram: 'instagram.costner',
         birthday: '5/5/1975',
-        information: 'Dances with wolves - forever!'
+        information: 'Dances with bodyguard'
     },
         {
             surname: 'Hopkins',
@@ -108,40 +108,52 @@ export class ContactsService implements OnInit {
             instagram: '',
             birthday: '',
             information: 'Утомленный Михалковым'
+        },
+        {
+            surname: 'Musk',
+            name: 'Elon',
+            desc: 'boss',
+            url: '../../assets/img/musk.jpg',
+            phone: '',
+            email: 'imthegod@elon.com',
+            facebook: '',
+            instagram: '',
+            birthday: '28/6/1971',
+            information: 'Plan on 2023: cheap electro-spaceships to Mars, 4days-trip'
         }
 ];
 
     constructor(private categoriesService: CategoriesService) {
-    }
-
-    ngOnInit() {
-        //this.categories = this.categoriesService.getCategories();
+        this.categories = this.categoriesService.getCategories();
         this.addCategoryByDescription();
     }
+
 
     getContacts() {
-        this.addCategoryByDescription();
         return this.CONTACTS;
     }
 
 
     addCategoryByDescription(): void {
-
+        const self = this;
         this.CONTACTS.forEach(function (item) {
             let cat = [];
             if (item['categories'] === undefined) {
             switch (item['desc']) {
                 case 'uncle':
                 case 'sister': {
-                    cat.push('Family');
+                    cat.push(self.categories[0]);
                     break;
                 }
                 case 'friend': {
-                    cat.push('Friends');
+                    cat.push(self.categories[1]);
                     break;
                 }
-                case 'coworker': {
-                    cat.push('Work');
+                case 'work':
+                case 'boss':
+                case 'coworker':
+                case 'job':{
+                    cat.push(self.categories[2]);
                     break;
                 }
             };

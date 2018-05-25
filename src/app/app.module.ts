@@ -16,6 +16,7 @@ import {ContactViewComponent} from './contact-view/contact-view.component';
 import {ContactsService} from './shared/contacts.service';
 import {UserService} from './shared/user.service';
 import {CategoriesService} from './shared/categories.service';
+import { EditContactComponent } from './edit-contact/edit-contact.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import {CategoriesService} from './shared/categories.service';
         MainComponent,
         SideMenuComponent,
         ContactsComponent,
-        ContactViewComponent
+        ContactViewComponent,
+        EditContactComponent
     ],
     imports: [
         BrowserModule,
@@ -39,6 +41,7 @@ import {CategoriesService} from './shared/categories.service';
             {path: 'contacts/:id', component: ContactsComponent},
             {path: 'create', component: ContactFormComponent},
             {path: 'contact/:id', component: ContactViewComponent},
+            {path: 'contact/:id/edit', component: EditContactComponent},
             /*{path: '**', component: PageNotFoundComponent }*/
         ])
     ],
