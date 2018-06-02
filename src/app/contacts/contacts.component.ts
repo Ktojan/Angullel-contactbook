@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges} from '@angular/core';
 import {ContactsService} from '../shared/contacts.service';
 import {UserService} from '../shared/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {CategoriesService} from '../shared/categories.service';
+import {SearchContactsService} from '../shared/search-contacts.service';
 
 
 @Component({
@@ -12,7 +13,9 @@ import {CategoriesService} from '../shared/categories.service';
 })
 export class ContactsComponent implements OnInit {
 
-    contacts: Object[];
+    contacts = [];
+    filteredContacts: Object[];
+    filterForContacts: string;
     categoryContacts = [];
     categories = [];
     user: string;
@@ -20,15 +23,32 @@ export class ContactsComponent implements OnInit {
     constructor(private contactsService: ContactsService,
                 private userService: UserService,
                 private categoriesService: CategoriesService,
+                private searchContactsService: SearchContactsService,
                 private activatedRoute: ActivatedRoute) {
+        this.filterForContacts = this.searchContactsService.filterForContacts;
+        this.contacts = this.contactsService.getContacts();
     }
 
     ngOnInit() {
-        this.contacts = this.contactsService.getContacts();
+        var self = this;
         this.categories = this.categoriesService.getCategories();
         this.user = this.userService.getUsername();
         this.filterContactsByCategory(this.activatedRoute.snapshot.params['id']);
+        this.filteredContacts = this.searchContactsService.getFilteredContacts();
+        console.log('this.filteredContacts'); console.log(this.filteredContacts);
     }
+
+    ngOnChanges(changes: any) {
+        this.filteredContacts = this.searchContactsService.getFilteredContacts();
+        console.log('ngOnChanges');
+        console.log(this.filteredContacts);
+    }
+
+   /* doFilter (contacts: Object[], value: string) {
+        value = value.toLocaleLowerCase();
+        return contacts.filter((contact: Object) =>
+        contact['surname'].toLocaleLowerCase().indexOf(value) !== -1);
+    }*/
 
     filterContactsByCategory(category): void {
         const self = this;
@@ -42,17 +62,6 @@ export class ContactsComponent implements OnInit {
         }
     }
 
-    /*    selectCatContacts(catVariants) {
-     const self = this;
-     this.contacts.forEach(function (item) {
-     catVariants.forEach(function (variant) {
-     if (item['desc'].indexOf(variant) !== -1) {  // например в 'sister-in-law' содержится 'sister'
-     if (self.categoryContacts.indexOf(item) === -1) // проверка, что этот элемент не был добавлен
-     self.categoryContacts.push(item);
-     }
-     })
-     });
-     }*/
 
     addToCategory(contact, category) {
         contact['categories'].push(category);

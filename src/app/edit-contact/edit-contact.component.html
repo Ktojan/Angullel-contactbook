@@ -30,7 +30,7 @@
         <section class="contact-form__main-info">
             <div class="contact-view__avatar"
                  [ngStyle]="{'background-image': 'url(' + this.actualContact.url + ')'}">
-            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br> <!-- /*todo */-->
             <label class="contact-form__label contact-form__label--file">
                 <input type="file" class="contact-form__input" placeholder="Upload a new photo">
             </label>
@@ -38,7 +38,8 @@
             <section class="contact-form__fields-wrapper">
                 <label class="contact-form__label contact-form__label--half">
                     <span class="contact-form__label-text">Name</span>
-                    <input type="text" class="contact-form__input"
+                    <input type="text"
+                           class="contact-form__input"
                            value="{{actualContact.name}}">
                 </label>
 

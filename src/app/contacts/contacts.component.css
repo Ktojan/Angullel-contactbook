@@ -1,3 +1,19 @@
+.contact-form__input {
+    width: 100%;
+    --box-shadow-color: rgba(48, 54, 80, .2);
+    border: 1px solid #999999;
+    box-shadow: inset 0 0 10px 0 var(--box-shadow-color);
+    transition: 0.5s;
+    height: 32px;
+    padding: 0 16px;
+}
+
+.contact-form__input:focus {
+    --box-shadow-color: rgba(16, 177, 223, 1);
+    border-color: #10b1df;
+}
+
+/*todo  delete*/
 
 
 

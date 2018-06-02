@@ -1,8 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-
-
 import {AppComponent} from './app.component';
 import {UserComponent} from './user/user.component';
 import {SearchComponent} from './search/search.component';
@@ -16,7 +14,11 @@ import {ContactViewComponent} from './contact-view/contact-view.component';
 import {ContactsService} from './shared/contacts.service';
 import {UserService} from './shared/user.service';
 import {CategoriesService} from './shared/categories.service';
-import { EditContactComponent } from './edit-contact/edit-contact.component';
+import {EditContactComponent} from './edit-contact/edit-contact.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import { ContactFilterPipe } from './contact-filter.pipe';
+import { FormsModule } from '@angular/forms';  // для использования ngModel
+import {SearchContactsService} from './shared/search-contacts.service';
 
 @NgModule({
     declarations: [
@@ -30,10 +32,13 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
         SideMenuComponent,
         ContactsComponent,
         ContactViewComponent,
-        EditContactComponent
+        EditContactComponent,
+        PageNotFoundComponent,
+        ContactFilterPipe
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         RouterModule.forRoot([
             {path: '', component: ContactsComponent},
             {path: 'contacts', component: ContactsComponent},
@@ -42,15 +47,13 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
             {path: 'create', component: ContactFormComponent},
             {path: 'contact/:id', component: ContactViewComponent},
             {path: 'contact/:id/edit', component: EditContactComponent},
-            /*{path: '**', component: PageNotFoundComponent }*/
+            {path: '**', component: PageNotFoundComponent}
         ])
     ],
     providers: [ContactsService,
                 UserService,
-                CategoriesService],
+                CategoriesService,
+                SearchContactsService],
     bootstrap: [AppComponent]
 })
-export class AppModule {
-
-
-}
+export class AppModule {}

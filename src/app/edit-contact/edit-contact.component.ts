@@ -17,8 +17,8 @@ export class EditContactComponent implements OnInit {
     }
 
     ngOnInit() {
-       this.contacts = this.contactsService.getContacts();
-       this.grabActualContact(this.activatedRoute.snapshot.params['id']);
+        this.contacts = this.contactsService.getContacts();
+        this.grabActualContact(this.activatedRoute.snapshot.params['id']);
     }
 
     grabActualContact(surname) {

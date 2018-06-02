@@ -1,32 +1,43 @@
 <menu class="side-menu">
-  <li class="side-menu__item side-menu__item--active">
-    <button class="side-menu__item-button"
-            (click)="toggleView('showCategories')">categories</button>
-
-    <div class="items-box" *ngIf="showCategories">
-        <div class="groups-list">
-            <button class="groups-list__item" [routerLink]="['/contacts']" routerLinkActive="active">All Contacts</button>
-        </div>
-        <div class="groups-list" *ngFor="let category of categories">
-        <button class="groups-list__item" [routerLink]="['/contacts', category]" routerLinkActive="active">{{category}}</button>
-      </div>
-    </div>
-  </li>
-
-  <li class="side-menu__item">
-    <button class="side-menu__item-button"
-            (click)="toggleView('showBdays')">upcoming birthday</button>
-
-    <div class="items-box" *ngIf="showBdays">
-      <div class="bdays-list">
-        <button class="bdays-list__item" *ngFor="let contact of contactsWithAge" [routerLink]="['/contact', contact.surname]" >  <!--*ngIf="contact.birthday"-->
-            <div class="bdays-list__item-wrapper" >
-            <span class="bdays-list__item-name">{{contact.surname}}</span>
-            <span class="bdays-list__item-age">{{contact.age}}&nbsp;years</span>
-          </div>
-          <div class="bdays-list__item-date">{{contact.birthday}}</div>
+    <li class="side-menu__item side-menu__item--active">
+        <button class="side-menu__item-button"
+                (click)="toggleView('showCategories')">categories
         </button>
-      </div>
-    </div>
-  </li>
+
+        <div class="items-box"
+             *ngIf="showCategories">
+            <div class="groups-list">
+                <button class="groups-list__item"
+                        [routerLink]="['/contacts']" routerLinkActive="active">All contacts
+                </button>
+            </div>
+            <div class="groups-list"
+                 *ngFor="let category of categories">
+                <button class="groups-list__item"
+                        [routerLink]="['/contacts', category]" routerLinkActive="active">
+                    {{category}}
+                </button>
+            </div>
+        </div>
+    </li>
+
+    <li class="side-menu__item">
+        <button class="side-menu__item-button"
+                (click)="toggleView('showBdays')">upcoming birthday
+        </button>
+
+        <div class="items-box" *ngIf="showBdays">
+            <div class="bdays-list">
+                <button class="bdays-list__item"
+                        *ngFor="let contact of contactsWithAge"
+                        [routerLink]="['/contact', contact.surname]">
+                    <div class="bdays-list__item-wrapper">
+                        <span class="bdays-list__item-name">{{contact.surname}}</span>
+                        <span class="bdays-list__item-age">{{contact.age}}&nbsp;years</span>
+                    </div>
+                    <div class="bdays-list__item-date">{{contact.birthday}}</div>
+                </button>
+            </div>
+        </div>
+    </li>
 </menu>

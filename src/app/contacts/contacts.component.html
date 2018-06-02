@@ -6,25 +6,28 @@
                   d="M501.333 96H10.667C4.779 96 0 100.779 0 106.667s4.779 10.667 10.667 10.667h490.667c5.888 0 10.667-4.779 10.667-10.667S507.221 96 501.333 96zm0 149.333H10.667C4.779 245.333 0 250.112 0 256s4.779 10.667 10.667 10.667h490.667c5.888 0 10.667-4.779 10.667-10.667s-4.78-10.667-10.668-10.667zm0 149.334H10.667C4.779 394.667 0 399.445 0 405.333 0 411.221 4.779 416 10.667 416h490.667c5.888 0 10.667-4.779 10.667-10.667-.001-5.888-4.78-10.666-10.668-10.666z"/>
         </svg>
     </button>
-    <span class="main-content__header-text">All contacts of {{user}}</span>
+    <span class="main-content__header-text">All contacts of {{user}}</span><span class="main-content__header-text"
+                                                                                 *ngIf="filterForContacts"> which surname contains "{{this.searchContactsService.filterForContacts}}"</span> <!---->
     <!-- Dots menu -->
     <button class="main-content__header-menu">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612">
             <path fill="currentColor"
-                  d="M55.636 250.364C24.907 250.364 0 275.27 0 306c0 30.73 24.907 55.636 55.636 55.636S111.273 336.73 111.273 306c0-30.73-24.907-55.636-55.637-55.636zm259.637 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.907 55.636 55.636 55.636 30.729 0 55.636-24.905 55.636-55.636 0-30.73-24.906-55.636-55.636-55.636zm241.091 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.906 55.636 55.636 55.636C587.093 361.636 612 336.73 612 306c0-30.73-24.907-55.636-55.636-55.636z" />
+                  d="M55.636 250.364C24.907 250.364 0 275.27 0 306c0 30.73 24.907 55.636 55.636 55.636S111.273 336.73 111.273 306c0-30.73-24.907-55.636-55.637-55.636zm259.637 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.907 55.636 55.636 55.636 30.729 0 55.636-24.905 55.636-55.636 0-30.73-24.906-55.636-55.636-55.636zm241.091 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.906 55.636 55.636 55.636C587.093 361.636 612 336.73 612 306c0-30.73-24.907-55.636-55.636-55.636z"/>
         </svg>
     </button>
 </header>
 
+
 <section class="contacts">
     <div class="contact-card"
-         *ngFor="let contact of categoryContacts">
+         *ngFor="let contact of categoryContacts">   <!--  filteredContacts-->
 
         <div class="contact-card__avatar"
              [ngStyle]="{'background-image': 'url(' + contact.url + ')'}"></div>
         <div class="contact-card__info">
             <button class="contact-card__btn"
-                    [routerLink]="['/contact', contact.surname]">  <!--*todo вернуть назад баттон снаружи трех дивов контакт-кард-->
+                    [routerLink]="['/contact', contact.surname]">
+                <!--*todo вернуть назад баттон снаружи трех дивов контакт-кард-->
                 <span class="contact-card__name">{{contact.surname}}</span>
             </button>
             <span class="contact-card__description">{{contact.desc}}</span>
@@ -35,26 +38,32 @@
              *ngIf="contact.showContactEditMenu">
             <button class="contact-card__menu-item"
                     (click)="contact.showContactEditMenu = !contact.showContactEditMenu"
-                    routerLink='/create'>Edit</button>
+                    routerLink='/create'>Edit
+            </button>
             <button class="contact-card__menu-item">Delete</button>
             <button class="contact-card__menu-item"
-                    (click)="contact.showCategoriesList = !contact.showCategoriesList">Add to category</button>
+                    (click)="contact.showCategoriesList = !contact.showCategoriesList">Add to category
+            </button>
 
             <div *ngIf="contact.showCategoriesList">
-                <button *ngFor="let category of categories"
-                        class="contact-card__menu-item"
+                <button class="contact-card__menu-item"
+                        *ngFor="let category of categories"
                         [hidden]="contact.categories.indexOf(category) != -1"
-                        (click)="addToCategory(contact, category); contact.showContactEditMenu = !contact.showContactEditMenu">{{category}}</button>
+                        (click)="addToCategory(contact, category); contact.showContactEditMenu = !contact.showContactEditMenu">
+                    {{category}}
+                </button>
             </div>
 
             <button class="contact-card__menu-item"
-                    (click)="contact.showContactEditMenu = !contact.showContactEditMenu">Cancel</button>
+                    (click)="contact.showContactEditMenu = !contact.showContactEditMenu">Cancel
+            </button>
 
         </div>
         <button class="contact-card__menu-btn"
                 (click)="contact.showContactEditMenu = !contact.showContactEditMenu">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612">
-                <path fill="currentColor" d="M55.636 250.364C24.907 250.364 0 275.27 0 306c0 30.73 24.907 55.636 55.636 55.636S111.273 336.73 111.273 306c0-30.73-24.907-55.636-55.637-55.636zm259.637 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.907 55.636 55.636 55.636 30.729 0 55.636-24.905 55.636-55.636 0-30.73-24.906-55.636-55.636-55.636zm241.091 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.906 55.636 55.636 55.636C587.093 361.636 612 336.73 612 306c0-30.73-24.907-55.636-55.636-55.636z"/>
+                <path fill="currentColor"
+                      d="M55.636 250.364C24.907 250.364 0 275.27 0 306c0 30.73 24.907 55.636 55.636 55.636S111.273 336.73 111.273 306c0-30.73-24.907-55.636-55.637-55.636zm259.637 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.907 55.636 55.636 55.636 30.729 0 55.636-24.905 55.636-55.636 0-30.73-24.906-55.636-55.636-55.636zm241.091 0c-30.73 0-55.636 24.907-55.636 55.636 0 30.729 24.906 55.636 55.636 55.636C587.093 361.636 612 336.73 612 306c0-30.73-24.907-55.636-55.636-55.636z"/>
             </svg>
         </button>
     </div>

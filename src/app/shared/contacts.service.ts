@@ -1,4 +1,4 @@
-import { Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {CategoriesService} from './categories.service';
 
 
@@ -7,66 +7,66 @@ export class ContactsService {
 
     categories = [];
     CONTACTS = [
-    {
-        surname: 'Bogatyrev',
-        name: 'Yuriy',
-        desc: 'uncle',
-        url: '../../assets/img/bogatyrev.jpg',
-        phone: '1111111',
-        email: 'bogatyrev@yandex.ru',
-        facebook: '',
-        instagram: '',
-        birthday: '',
-        information: 'Свой среди своих, чужой среди чужих. Все как положено. '
-    },
-    {
-        surname: 'Weis',
-        name: 'Rachel',
-        desc: 'coworker',
-        url: '../../assets/img/weis.jpg',
-        phone: '',
-        email: 'rachelweis@gmail.com',
-        facebook: 'facebook.weis',
-        instagram: 'instagram.rachelweis',
-        birthday: '',
-        information: ''
-    },
-    {
-        surname: 'Irons',
-        name: 'Jeremy',
-        desc: 'family member',
-        url: '../../assets/img/irons.jpg',
-        phone: '3333333',
-        email: '',
-        facebook: '',
-        instagram: '',
-        birthday: '3/3/1943',
-        information: 'some info about Jeremy'
-    },
-    {
-        surname: 'Hamatova',
-        name: 'Chulpan',
-        desc: 'girl-friend :-)',
-        url: '../../assets/img/hamatova.jpg',
-        phone: '4444444',
-        email: 'hamatova@yandex.ru',
-        facebook: 'facebook.hamatova',
-        instagram: '',
-        birthday: '',
-        information: 'Вечно молодая'
-    },
-    {
-        surname: 'Costner',
-        name: 'Kevin',
-        desc: 'job',
-        url: '../../assets/img/kostner.jpg',
-        phone: '',
-        email: 'costner@gmail.com',
-        facebook: '',
-        instagram: 'instagram.costner',
-        birthday: '5/5/1975',
-        information: 'Dances with bodyguard'
-    },
+        {
+            surname: 'Bogatyrev',
+            name: 'Yuriy',
+            desc: 'uncle',
+            url: '../../assets/img/bogatyrev.jpg',
+            phone: '1111111',
+            email: 'bogatyrev@yandex.ru',
+            facebook: '',
+            instagram: '',
+            birthday: '',
+            information: 'Свой среди своих, чужой среди чужих. Все как положено. '
+        },
+        {
+            surname: 'Weis',
+            name: 'Rachel',
+            desc: 'coworker',
+            url: '../../assets/img/weis.jpg',
+            phone: '',
+            email: 'rachelweis@gmail.com',
+            facebook: 'facebook.weis',
+            instagram: 'instagram.rachelweis',
+            birthday: '',
+            information: ''
+        },
+        {
+            surname: 'Irons',
+            name: 'Jeremy',
+            desc: 'family member',
+            url: '../../assets/img/irons.jpg',
+            phone: '3333333',
+            email: '',
+            facebook: '',
+            instagram: '',
+            birthday: '3/3/1943',
+            information: 'some info about Jeremy'
+        },
+        {
+            surname: 'Hamatova',
+            name: 'Chulpan',
+            desc: 'girl-friend :-)',
+            url: '../../assets/img/hamatova.jpg',
+            phone: '4444444',
+            email: 'hamatova@yandex.ru',
+            facebook: 'facebook.hamatova',
+            instagram: '',
+            birthday: '',
+            information: 'Вечно молодая'
+        },
+        {
+            surname: 'Costner',
+            name: 'Kevin',
+            desc: 'job',
+            url: '../../assets/img/kostner.jpg',
+            phone: '',
+            email: 'costner@gmail.com',
+            facebook: '',
+            instagram: 'instagram.costner',
+            birthday: '5/5/1975',
+            information: 'Dances with bodyguard'
+        },
         {
             surname: 'Hopkins',
             name: 'Sir Philip Anthony',
@@ -121,50 +121,46 @@ export class ContactsService {
             birthday: '28/6/1971',
             information: 'Plan on 2023: cheap electro-spaceships to Mars, 4days-trip'
         }
-];
+    ];
 
     constructor(private categoriesService: CategoriesService) {
         this.categories = this.categoriesService.getCategories();
         this.addCategoryByDescription();
     }
 
-
     getContacts() {
         return this.CONTACTS;
     }
-
 
     addCategoryByDescription(): void {
         const self = this;
         this.CONTACTS.forEach(function (item) {
             let cat = [];
             if (item['categories'] === undefined) {
-            switch (item['desc']) {
-                case 'uncle':
-                case 'sister': {
-                    cat.push(self.categories[0]);
-                    break;
-                }
-                case 'friend': {
-                    cat.push(self.categories[1]);
-                    break;
-                }
-                case 'work':
-                case 'boss':
-                case 'coworker':
-                case 'job':{
-                    cat.push(self.categories[2]);
-                    break;
-                }
-            };
-            item['categories'] = cat;
-            console.log(item);
-               /* if (item['desc'].indexOf(variant) !== -1) {  // например в 'sister-in-law' содержится 'sister'
-                    if (self.categoryContacts.indexOf(item) === -1) // проверка, что этот элемент не был добавлен
-                        self.categoryContacts.push(item);
-                }*/
+                switch (item['desc']) {
+                    case 'uncle':
+                    case 'sister': {
+                        cat.push(self.categories[0]);
+                        break;
+                    }
+                    case 'friend': {
+                        cat.push(self.categories[1]);
+                        break;
+                    }
+                    case 'work':
+                    case 'boss':
+                    case 'coworker':
+                    case 'job': {
+                        cat.push(self.categories[2]);
+                        break;
+                    }
+                };
+                item['categories'] = cat;
+                /* if (item['desc'].indexOf(variant) !== -1) {  // например в 'sister-in-law' содержится 'sister'
+                 if (self.categoryContacts.indexOf(item) === -1) // проверка, что этот элемент не был добавлен
+                 self.categoryContacts.push(item);
+                 }*/
             }
         });
-
     }
 }
