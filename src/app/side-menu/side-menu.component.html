@@ -8,13 +8,16 @@
              *ngIf="showCategories">
             <div class="groups-list">
                 <button class="groups-list__item"
-                        [routerLink]="['/contacts']" routerLinkActive="active">All contacts
+                        [routerLink]="['/contacts']"
+                        routerLinkActive="active">
+                    All contacts
                 </button>
             </div>
             <div class="groups-list"
                  *ngFor="let category of categories">
                 <button class="groups-list__item"
-                        [routerLink]="['/contacts', category]" routerLinkActive="active">
+                        [routerLink]="['/contacts', category]"
+                        routerLinkActive="active">
                     {{category}}
                 </button>
             </div>
@@ -35,7 +38,7 @@
                         <span class="bdays-list__item-name">{{contact.surname}}</span>
                         <span class="bdays-list__item-age">{{contact.age}}&nbsp;years</span>
                     </div>
-                    <div class="bdays-list__item-date">{{contact.birthday}}</div>
+                    <div class="bdays-list__item-date">{{contact.birthday| date: longDate}}</div>
                 </button>
             </div>
         </div>

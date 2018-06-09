@@ -13,16 +13,19 @@
     padding-right: 32px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     transition: border-color 0.5s;
+    color: white;
+
 }
 
 .search__input:focus {
+    width: 100%;
+    height: 64px;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5);
     border-bottom-color: white;
     color: white;
+    font-size: 2.5rem;
 }
 
-.search__input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
 
 .search__button {
     position: absolute;

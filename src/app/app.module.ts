@@ -42,7 +42,6 @@ import {SearchContactsService} from './shared/search-contacts.service';
         RouterModule.forRoot([
             {path: '', component: ContactsComponent},
             {path: 'contacts', component: ContactsComponent},
-            {path: 'contacts/All Contacts', redirectTo: '/contacts'},
             {path: 'contacts/:id', component: ContactsComponent},
             {path: 'create', component: ContactFormComponent},
             {path: 'contact/:id', component: ContactViewComponent},

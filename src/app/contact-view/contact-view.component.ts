@@ -17,15 +17,14 @@ export class ContactViewComponent implements OnInit {
 
   ngOnInit() {
       this.contacts = this.contactsService.getContacts();
-      this.grabActualContact(this.activatedRoute.snapshot.params['id']);
+      const id = this.activatedRoute.snapshot.params['id'];
+      this.grabActualContact(id);
   }
 
   grabActualContact(surname) {
-      let self = this;
-      this.contacts.forEach(function (item) {
+      this.contacts.forEach((item) => {
           if (item['surname'] === surname) {
-              self.actualContact = item;
-              return;
+              this.actualContact = item;
           }
       });
   }

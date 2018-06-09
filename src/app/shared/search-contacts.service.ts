@@ -3,34 +3,24 @@ import {ContactsService} from '../shared/contacts.service';
 
 @Injectable()
 export class SearchContactsService {
-    contacts = [];
-    filteredContacts: Object[];
-    _filterForContacts: string;
-
-    get filterForContacts() {
-        return this._filterForContacts;
-    }
-
-    set filterForContacts(value: string) {
-        this._filterForContacts = value;
-        this.filteredContacts = this.filterForContacts ? this.doFilter(this.contacts, this.filterForContacts) : this.contacts;
-       console.log(this.filteredContacts);
-    }
+    contacts =[];
+    filteredContacts =[];
+    filterForContacts;
+    updateSubscribers =[]; // агрегатор функций, которые запускают обновление в каждом из компонентов
 
     constructor(private contactsService: ContactsService) {
         this.contacts = this.contactsService.getContacts();
         this.filteredContacts = this.contacts;
-       // this.filterForContacts = '';
+        console.log(this.filteredContacts);
     }
 
-    getFilteredContacts() {
-        console.log( this._filterForContacts);
-        return this.filteredContacts;
-    }
-
-    doFilter(contacts: Object[], filter: string) {
+    getFilteredContacts(filter) {
         filter = filter.toLocaleLowerCase();
-        return contacts.filter((contact: Object) =>
-        contact['surname'].toLocaleLowerCase().indexOf(filter) !== -1);
+        this.filterForContacts = filter;
+        this.filteredContacts = (filter!=='') ? this.contacts.filter(contact => contact['surname'].toLocaleLowerCase().includes(filter))
+            : this.contacts;
+        console.log(this.filteredContacts);
+        console.log(this.updateSubscribers[0]);
+        this.updateSubscribers.forEach(func => func());
     }
 }
