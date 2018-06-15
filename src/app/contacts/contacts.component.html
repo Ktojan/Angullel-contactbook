@@ -21,7 +21,7 @@
 
 <section class="contacts">
     <div class="contact-card"
-         *ngFor="let contact of contacts | contactPipeFilter">    <!-- categoryContacts -->
+         *ngFor="let contact of filteredContacts">    <!--    contacts | contactPipeFilter categoryContacts  filteredContacts  -->
 
         <div class="contact-card__avatar"
              [ngStyle]="{'background-image': 'url(' + contact.url + ')'}"></div>

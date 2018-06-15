@@ -31,13 +31,15 @@ export class ContactsComponent implements OnInit {
     ngOnInit() {
         this.categories = this.categoriesService.getCategories();
         this.user = this.userService.getUsername();
-      // this.searchContactsService.updateSubscribers.push(this.updateFilteredCont);
-       this.updateFilteredCont();
+       this.searchContactsService.updateSubscribers.push(this.updateFilteredCont.bind(this));
+       // this.searchContactsService.updateSubscribers.push(this.filterContactsByCategory.bind(this)); //*****************
+        this.filterContactsByCategory(this.activatedRoute.snapshot.params['id']);
+        this.updateFilteredCont();
         
     }
 
     updateFilteredCont() {
-      // this.filteredContacts = this.searchContactsService.filteredContacts;
+       this.filteredContacts = this.searchContactsService.filteredContacts;
         console.log('ContactsComponent'); console.log(this.filteredContacts);
     }
 

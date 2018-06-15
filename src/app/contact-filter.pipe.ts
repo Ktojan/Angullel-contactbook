@@ -9,14 +9,17 @@ export class ContactFilterPipe implements PipeTransform {
     letter: string;
 
     constructor(private searchContactsService: SearchContactsService) {
-        this.letter = this.searchContactsService.filterForContacts || 'n'; /*todo delete second*/
+        this.letter = this.searchContactsService.filterForContacts;
         console.log(this.searchContactsService.filterForContacts);
-        this.searchContactsService.updateSubscribers.push(this.updateFilteredCont);
+        this.searchContactsService.updateSubscribers.push(this.updateFilteredCont.bind(this));
     }
 
     transform(allContacts) {
-        return (this.letter !== '') ? allContacts.filter(contact => contact['surname'].toLocaleLowerCase().includes(this.letter))
+
+        var cont = (this.letter !== '') ? allContacts.filter(contact => contact['surname'].toLocaleLowerCase().includes(this.letter))
             : allContacts;
+        console.log(cont);
+        return cont;
     }
 
     updateFilteredCont() {
