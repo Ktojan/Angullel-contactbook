@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {UserComponent} from './user/user.component';
 import {SearchComponent} from './search/search.component';
@@ -39,6 +40,7 @@ import {SearchContactsService} from './shared/search-contacts.service';
     imports: [
         BrowserModule,
         FormsModule,
+        AppRoutingModule,
         RouterModule.forRoot([
             {path: '', component: ContactsComponent},
             {path: 'contacts', component: ContactsComponent},

@@ -2,11 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app",
-    "\\src\\app\\contacts",
-    "\\src\\app\\search",
-    "\\src\\app\\shared"
+    "\\src\\app"
   ],
-  "SelectedNode": "\\src\\app\\search\\search.component.html",
+  "SelectedNode": "\\src\\app\\main",
   "PreviewInSolutionExplorer": false
 }

@@ -16,7 +16,10 @@
     </button>
 </header>
 
-<form class="contact-form">
+<form (ngSubmit)="onSubmit()"
+      #contactForm="ngForm"
+      class="contact-form">
+
   <section class="contact-form__wrapper">
     <button class="contact-form__close-button"
             [routerLink]="['/contacts']">
@@ -26,58 +29,117 @@
     </button>
   </section>
 
+
+ <!--   <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name"
+                   required
+                   [(ngModel)]="model.name" name="name"
+                   #name="ngModel">
+            <div [hidden]="name.valid || name.pristine"
+                 class="alert alert-danger">
+                Name is required
+            </div>
+        </div>-->
+
+
   <section class="contact-form__fields-box">
     <section class="contact-form__main-info">
-      <label class="contact-form__label contact-form__label--file">
-        <input type="file" class="contact-form__input">
-      </label>
+            <label class="form-group contact-form__label contact-form__label--file">
+            <input type="file" class="contact-form__input form-control">
+            </label>
 
       <section class="contact-form__fields-wrapper">
-        <label class="contact-form__label contact-form__label--half">
+        <label class="form-group contact-form__label contact-form__label--half">
           <span class="contact-form__label-text">Name</span>
-          <input type="text" class="contact-form__input">
+          <input type="text" class="contact-form__input  form-control"
+                 [(ngModel)]="model.name" name="name"
+                 #name="ngModel"
+                 required>
+            <div [hidden]="name.valid || name.pristine"
+                 class="alert alert-danger">
+                Name is required
+            </div>
         </label>
 
         <label class="contact-form__label contact-form__label--half">
           <span class="contact-form__label-text">Surname</span>
-          <input type="text" class="contact-form__input">
+          <input type="text" class="contact-form__input  form-control"
+                 [(ngModel)]="model.surname" name="surname"
+                 #surname="ngModel"
+                 required>
+            <div [hidden]="surname.valid || surname.pristine" class="alert alert-danger">
+                Surname is required
+            </div>
         </label>
 
         <label class="contact-form__label">
           <span class="contact-form__label-text">Description</span>
-          <textarea class="contact-form__textarea" rows="1"></textarea>
+          <textarea class="contact-form__textarea form-control" rows="1"
+                    [(ngModel)]="model.desc" name="desc"
+                    #desc="ngModel"
+                    required></textarea>
         </label>
+          <div [hidden]="desc.valid || desc.pristine" class="alert alert-danger">
+              Description is required
+          </div>
       </section>
     </section>
 
+      <label class="contact-form__label">
+          <span class="contact-form__label-text">Categories</span>
+          <select type="tel" class="form-control" id="categories"
+
+
+                  required>  <!--[(ngModel)]="model.categories" name="categories" #categories="ngModel"-->
+              <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+          </select>
+      </label>
+
     <label class="contact-form__label">
       <span class="contact-form__label-text">Phone</span>
-      <input type="tel" class="contact-form__input">
+      <input type="tel" class="contact-form__input form-control"
+             [(ngModel)]="model.phone" name="phone"
+             #phone="ngModel">
     </label>
     <label class="contact-form__label">
       <span class="contact-form__label-text">Email</span>
-      <input type="email" class="contact-form__input">
+      <input type="email" class="contact-form__input form-control"
+             [(ngModel)]="model.email" name="email"
+             #email="ngModel">
     </label>
     <label class="contact-form__label">
       <span class="contact-form__label-text">Birthday</span>
-      <input type="text" class="contact-form__input">
+      <input type="text" class="contact-form__input form-control"
+             [(ngModel)]="model.birthday" name="birthday"
+             #birthday="ngModel">
     </label>
     <label class="contact-form__label">
       <span class="contact-form__label-text">Information</span>
-      <textarea class="contact-form__textarea" rows="5"></textarea>
+      <textarea class="contact-form__textarea form-control" rows="5"
+                [(ngModel)]="model.information" name="information"
+                #information="ngModel"></textarea>
     </label>
     <label class="contact-form__label">
       <span class="contact-form__label-text">Instagram</span>
-      <input type="text" class="contact-form__input">
+      <input type="text" class="contact-form__input form-control"
+             [(ngModel)]="model.instagram" name="instagram"
+             #instagram="ngModel">
     </label>
 
     <label class="contact-form__label">
       <span class="contact-form__label-text">Facebook</span>
-      <input type="text" class="contact-form__input">
+      <input type="text" class="contact-form__input form-control"
+             [(ngModel)]="model.facebook" name="facebook"
+             #facebook="ngModel">
     </label>
   </section>
 
   <div class="contact-form__buttons-box">
-    <button class="contact-form__button contact-form__button--main">Create</button>
+    <button type="submit"
+            class="contact-form__button contact-form__button--main"
+            [disabled]="contactForm.form.invalid">Create!</button>
   </div>
 </form>
+
