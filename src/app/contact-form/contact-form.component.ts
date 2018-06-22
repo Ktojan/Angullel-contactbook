@@ -20,7 +20,6 @@ export class ContactFormComponent implements OnInit {
 
     ngOnInit() {
         this.categories = this.categoriesService.getCategories();
-        this.categories.unshift(''); // для возможности не выбирать ни одну из категорий
         console.log(this.categories);
     }
 

@@ -229,7 +229,7 @@
 }
 
 .contact-form__input {
-    width: 100%;
+    width: 47%;
     --box-shadow-color: rgba(48, 54, 80, .2);
     border: 1px solid #999999;
     box-shadow: inset 0 0 10px 0 var(--box-shadow-color);
@@ -244,7 +244,7 @@
 }
 
 .contact-form__textarea {
-    width: 100%;
+    width: 47%;
     --box-shadow-color: rgba(48, 54, 80, .2);
     border: 1px solid #999999;
     box-shadow: inset 0 0 10px 0 var(--box-shadow-color);

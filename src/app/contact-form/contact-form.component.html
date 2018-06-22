@@ -47,7 +47,14 @@
   <section class="contact-form__fields-box">
     <section class="contact-form__main-info">
             <label class="form-group contact-form__label contact-form__label--file">
-            <input type="file" class="contact-form__input form-control">
+            <input type="file" class="contact-form__input form-control"
+                   [(ngModel)]="model.url" name="url"
+                   #url="ngModel"
+                   required>
+                <div [hidden]="url.valid || url.pristine"
+                     class="alert alert-danger">
+                    Photo is required
+                </div>
             </label>
 
       <section class="contact-form__fields-wrapper">
@@ -76,7 +83,7 @@
 
         <label class="contact-form__label">
           <span class="contact-form__label-text">Description</span>
-          <textarea class="contact-form__textarea form-control" rows="1"
+          <textarea class="contact-form__textarea form-control" rows="2"
                     [(ngModel)]="model.desc" name="desc"
                     #desc="ngModel"
                     required></textarea>
@@ -89,9 +96,8 @@
 
       <label class="contact-form__label">
           <span class="contact-form__label-text">Categories</span>
-          <select type="tel" class="form-control" id="categories"
-
-
+          <select type="tel" class="contact-form__input form-control" id="categories"
+                  style="width: 16%; font-size: 1em"
                   required>  <!--[(ngModel)]="model.categories" name="categories" #categories="ngModel"-->
               <option *ngFor="let category of categories" [value]="category">{{category}}</option>
           </select>
@@ -117,7 +123,7 @@
     </label>
     <label class="contact-form__label">
       <span class="contact-form__label-text">Information</span>
-      <textarea class="contact-form__textarea form-control" rows="5"
+      <textarea class="contact-form__textarea form-control" rows="3"
                 [(ngModel)]="model.information" name="information"
                 #information="ngModel"></textarea>
     </label>
@@ -139,6 +145,7 @@
   <div class="contact-form__buttons-box">
     <button type="submit"
             class="contact-form__button contact-form__button--main"
+            [class.disable]="contactForm.form.invalid"
             [disabled]="contactForm.form.invalid">Create!</button>
   </div>
 </form>

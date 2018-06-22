@@ -44,7 +44,6 @@ export class ContactsComponent implements OnInit {
 
         const ESC_KEY = 27;
         const searchInput = document.getElementById('searchInput') as HTMLInputElement;
-        console.log(searchInput);
         const subscription = Observable.fromEvent(searchInput, 'click')
             .subscribe((e: KeyboardEvent) => {
                 if (e.keyCode === ESC_KEY) {

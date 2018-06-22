@@ -20,6 +20,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import { ContactFilterPipe } from './contact-filter.pipe';
 import { FormsModule } from '@angular/forms';  // для использования ngModel
 import {SearchContactsService} from './shared/search-contacts.service';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import {SearchContactsService} from './shared/search-contacts.service';
         BrowserModule,
         FormsModule,
         AppRoutingModule,
-        RouterModule.forRoot([
+        AdminModule
+     /*   RouterModule.forRoot([
             {path: '', component: ContactsComponent},
             {path: 'contacts', component: ContactsComponent},
             {path: 'contacts/:id', component: ContactsComponent},
@@ -49,7 +51,7 @@ import {SearchContactsService} from './shared/search-contacts.service';
             {path: 'contact/:id', component: ContactViewComponent},
             {path: 'contact/:id/edit', component: EditContactComponent},
             {path: '**', component: PageNotFoundComponent}
-        ])
+        ])*/
     ],
     providers: [ContactsService,
                 UserService,
