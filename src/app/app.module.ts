@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
-import {AppRoutingModule} from './app-routing.module';
+import {FormsModule } from '@angular/forms';  // для использования ngModel
+
 import {AppComponent} from './app.component';
 import {UserComponent} from './user/user.component';
 import {SearchComponent} from './search/search.component';
@@ -16,11 +16,14 @@ import {ContactsService} from './shared/contacts.service';
 import {UserService} from './shared/user.service';
 import {CategoriesService} from './shared/categories.service';
 import {EditContactComponent} from './edit-contact/edit-contact.component';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import { ContactFilterPipe } from './contact-filter.pipe';
-import { FormsModule } from '@angular/forms';  // для использования ngModel
+import {ContactFilterPipe } from './contact-filter.pipe';
 import {SearchContactsService} from './shared/search-contacts.service';
-import { AdminModule } from './admin/admin.module';
+import {AppRoutingModule} from './app-routing.module';
+import {AdminModule } from './admin/admin.module';
+import {AuthGuard} from './auth.guard';
+import {AuthService} from './shared/auth.service';
+import {LoginComponent } from './login/login.component';
+
 
 @NgModule({
     declarations: [
@@ -35,28 +38,21 @@ import { AdminModule } from './admin/admin.module';
         ContactsComponent,
         ContactViewComponent,
         EditContactComponent,
-        PageNotFoundComponent,
-        ContactFilterPipe
+        ContactFilterPipe,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         AppRoutingModule,
         AdminModule
-     /*   RouterModule.forRoot([
-            {path: '', component: ContactsComponent},
-            {path: 'contacts', component: ContactsComponent},
-            {path: 'contacts/:id', component: ContactsComponent},
-            {path: 'create', component: ContactFormComponent},
-            {path: 'contact/:id', component: ContactViewComponent},
-            {path: 'contact/:id/edit', component: EditContactComponent},
-            {path: '**', component: PageNotFoundComponent}
-        ])*/
     ],
     providers: [ContactsService,
                 UserService,
                 CategoriesService,
-                SearchContactsService],
+                SearchContactsService,
+                AuthGuard,
+                AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

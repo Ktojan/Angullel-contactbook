@@ -1,49 +1,26 @@
 import {Injectable} from '@angular/core';
 import {CategoriesService} from './categories.service';
-import { CONTACTS } from './contacts.data';
+import {CONTACTS} from './contacts.data';
 
 
 @Injectable()
 export class ContactsService {
-    categories = [];
 
-    constructor(private categoriesService: CategoriesService) {
-        this.categories = this.categoriesService.getCategories();
-        this.addCategoryByDescription();
-    }
+    constructor() { }
 
-    getContacts() {
-        return CONTACTS;
+    getContacts() {  // got from here: https://stackoverflow.com/questions/17745292/how-to-retrieve-all-localstorage-items-without-knowing-the-keys-in-advance
+        let contFromLocStor = [],
+            keys = Object.keys(localStorage),
+            i = keys.length;
+        while (i--) {
+            let contact = localStorage.getItem(keys[i]);
+            contFromLocStor.push(JSON.parse(contact));
+        }
+        return contFromLocStor;
     }
 
     getContactsByCategory(category) {
         return CONTACTS.filter(item => item['categories'].includes(category));
     }
 
-    addCategoryByDescription() {
-        CONTACTS.forEach((item) => {
-            let cat = [];
-            if (item['categories'].length === 0) {
-                switch (item['desc']) {
-                    case 'uncle':
-                    case 'sister': {
-                        cat.push(this.categories[0]);
-                        break;
-                    }
-                    case 'friend': {
-                        cat.push(this.categories[1]);
-                        break;
-                    }
-                    case 'work':
-                    case 'boss':
-                    case 'coworker':
-                    case 'job': {
-                        cat.push(this.categories[2]);
-                        break;
-                    }
-                };
-                item['categories'] = cat;
-            }
-        });
-    }
 }

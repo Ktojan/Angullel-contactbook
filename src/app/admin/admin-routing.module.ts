@@ -3,26 +3,26 @@ import {Routes, RouterModule} from '@angular/router';
 import {AdminComponent} from './admin.component';
 import {AdminListComponent} from '../admin-list/admin-list.component';
 import {AdminItemComponent} from '../admin-item/admin-item.component';
+import {AuthGuard} from "../auth.guard";
 
 const routes: Routes = [{
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AuthGuard],
     children: [{
         path: '',
         pathMatch: 'full',
         component: AdminListComponent
-        //redirectTo: '/list'
     }, {
         path: 'list',
         component: AdminListComponent,
-       // data: { title: 'Heroes List' }
+        data: { title: ' AdminComponent --> AdminListComponent' }
     }, {
         path: ':id',
-        component: AdminItemComponent
+        component: AdminItemComponent,
+        data: { title: 'AdminComponent --> AdminItemComponent' }
     }]
 }];
-
-
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

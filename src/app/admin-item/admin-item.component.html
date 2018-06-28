@@ -1,3 +1,11 @@
-<p>
-  admin-item works!
+<p style="font-size: 2em;">
+  SINGLE USER PANEL ({{title}})
 </p>
+    №{{userId+1}}: Our dear {{user}}
+<br><br>
+<button [routerLink]="['/admin', userId-1]"
+        *ngIf="userId !== 0"
+        style="border: 1px solid sandybrown; padding: 12px"><-- PREVIOUS USER</button>
+<button [routerLink]="['/admin', userId+1]"
+        *ngIf="userId !== length-1"
+        style="border: 1px solid sandybrown; padding: 12px">NEXT USER --></button>

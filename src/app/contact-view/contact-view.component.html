@@ -32,7 +32,7 @@
 
         <div class="contact-view__field" *ngIf="this.actualContact.birthday">
             <span class="contact-view__field-name">Birthday</span>
-            <span class="contact-view__field-text">{{this.actualContact.birthday | date: longDate}}</span>
+            <span class="contact-view__field-text">{{this.actualContact.birthday}}</span> <!--*todo  | date: longDate-->
         </div>
         <div class="contact-view__field" *ngIf="this.actualContact.email">
             <span class="contact-view__field-name">Email</span>

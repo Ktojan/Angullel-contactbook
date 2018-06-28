@@ -18,6 +18,5 @@ export class SearchComponent implements OnInit {
     filterContacts (inputValue) {
         this.filterName = inputValue;
         this.searchContactsService.getFilteredContacts(inputValue);
-        //*todo delete focus-style
     }
 }

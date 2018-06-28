@@ -1,13 +1,17 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class UserService {
 
-    getUsername()
-    {
-        return USERNAME;
+    loggedUser = 'Some guy';
+
+    getUsername() {
+        return this.loggedUser;
     }
-  constructor() { }
+
+    getUsernames() {
+        return USERNAMES;
+    }
 }
 
-let USERNAME = 'Mishka Hevery';
+const USERNAMES = ['Mishka Hevery', 'Filipe Silva', 'Igor Minar', 'Naomi Black', 'Elana Olson', 'Matias Niemela'];

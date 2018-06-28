@@ -1,0 +1,8 @@
+.users_list {
+    display: inline-block;
+    border: 2px solid orange;
+    text-align: left;
+    padding: 2vw;
+    font-size: 2em;
+    cursor: pointer;
+}

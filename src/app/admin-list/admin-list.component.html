@@ -1,3 +1,7 @@
-<p>
-  admin-list component
-</p>
+<div class="users_list">
+    {{title}}
+<ol>
+    <li *ngFor="let user of users; let id = index"
+        [routerLink]="id">{{user}}: simple user</li>
+</ol>
+</div>

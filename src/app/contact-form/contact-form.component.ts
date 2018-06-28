@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { CONTACTS } from '../shared/contacts.data';
+import { rezervCONTACTS} from '../shared/contacts.data';
 import { Contact }    from '../contact';
 import {CategoriesService} from '../shared/categories.service';
 import { Router} from '@angular/router';
@@ -11,7 +12,7 @@ import { Router} from '@angular/router';
 })
 export class ContactFormComponent implements OnInit {
 
-    model = new Contact('Богатырь', 'номер 1', '... в команду Черномора');
+    model: Contact;
     categories;
 
     constructor(private router: Router,
@@ -20,13 +21,16 @@ export class ContactFormComponent implements OnInit {
 
     ngOnInit() {
         this.categories = this.categoriesService.getCategories();
-        console.log(this.categories);
+        this.model = rezervCONTACTS[0];  //несколько заготовок, данные из которых подставляются в инпуты при создании нового контакта
     }
 
     onSubmit() {
-        console.log(this.model);
         alert("New contact " + this.model.surname + " was created!");
+        let lStor = window.localStorage;
+        let strModel = JSON.stringify(this.model);
+        lStor.setItem(this.model.surname,strModel);
+        let newUser = JSON.parse(lStor.getItem('first'));
+        if (rezervCONTACTS.length !== 0) rezervCONTACTS.shift();
         this.router.navigate(['/contacts']);
-        CONTACTS.push(this.model);
     }
 }
