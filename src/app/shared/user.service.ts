@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class UserService {
 
-    loggedUser = 'Some guy';
+    loggedUser = 'karpovich.andrey';
 
     getUsername() {
         return this.loggedUser;

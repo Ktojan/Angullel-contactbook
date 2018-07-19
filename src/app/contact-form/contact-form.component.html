@@ -36,10 +36,16 @@
                     #url="ngModel">
               </label>-->
 
-            <section class="contact-view__main-info">
+           <!-- <section class="contact-view__main-info">
                 <div class="contact-view__avatar"
                      [ngStyle]="{'background-image': 'url(' + model.url + ')'}"></div>
-            </section>
+            </section>-->
+
+            <form (ngSubmit)="getImage(imgName.value)"
+             action="/api/files" enctype="multipart/form-data" method="POST">
+                <input type="file" name="avatar" #imgName />
+                <input type="submit" value="Upload Photo"/>
+            </form>
 
             <section class="contact-form__fields-wrapper">
                 <label class="form-group contact-form__label contact-form__label--half">
@@ -66,14 +72,14 @@
                 </label>
 
                 <label class="contact-form__label">
-                    <span class="contact-form__label-text">Description</span>
+                    <span class="contact-form__label-text">Position</span>
                     <textarea class="contact-form__textarea form-control" rows="2"
-                              [(ngModel)]="model.desc" name="desc"
-                              #desc="ngModel"
+                              [(ngModel)]="model.position" name="position"
+                              #position="ngModel"
                               required></textarea>
                 </label>
-                <div [hidden]="desc.valid || desc.pristine" class="alert alert-danger">
-                    Description is required
+                <div [hidden]="position.valid || position.pristine" class="alert alert-danger">
+                    Position is required
                 </div>
             </section>
         </section>

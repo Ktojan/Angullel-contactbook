@@ -21,7 +21,7 @@ export const CONTACTS: Contact[] =
 
 export const rezervCONTACTS: Contact[] =
     [
-        new Contact('Delon','Alain','best friend','../../assets/img/delon.jpg','2647770','','','instagram.odecolon','8/11/1935','говорит по французски',['Friend']),
+        new Contact('Delon','Alain','best friend','../../assets/img/delon.jpg','','','','instagram.odecolon','8/11/1935','',),
         new Contact('Филатов','Леонид','worked together','../../assets/img/filatov.jpg','7350014','','','','8/2/1958','чтобы помнили',['Work']),
         new Contact('Reaves','Keanu','outside all categories','../../assets/img/reaves.jpg','7350014','','keanu@matrix.com','','8/11/1972','Im not a battery!!',[])
     ]

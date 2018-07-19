@@ -8,7 +8,6 @@ import { ActivatedRoute} from '@angular/router';
   styleUrls: ['./contact-view.component.css']
 })
 export class ContactViewComponent implements OnInit {
-    contacts;
     actualContact: Object;
 
     constructor(private contactsService: ContactsService,
@@ -16,16 +15,9 @@ export class ContactViewComponent implements OnInit {
     }
 
   ngOnInit() {
-      this.contacts = this.contactsService.getContacts();
       const id = this.activatedRoute.snapshot.params['id'];
-      this.grabActualContact(id);
-  }
-
-  grabActualContact(surname) {
-      this.contacts.forEach((item) => {
-          if (item['surname'] === surname) {
-              this.actualContact = item;
-          }
-      });
+      this.contactsService.getOneContact(id)
+          .subscribe(obj => this.actualContact = obj);
+      console.log(this.actualContact);
   }
 }

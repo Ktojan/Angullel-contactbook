@@ -1,22 +1,27 @@
-<section class="user">
-    <div class="user__avatar" *ngIf="this.auth.isAutorized"></div>
+<section class="user" [ngSwitch]="this.auth.isAutorized">
 
-    <section class="user__info">
-        <span class="user__name" *ngIf="this.auth.isAutorized">{{user}} </span>
-        <span class="user__name" *ngIf="!this.auth.isAutorized">Incognito </span>
-        <button (click)="doLogout()"
-                class="user__log-out" *ngIf="this.auth.isAutorized">Log out
-        </button>
-        <button [routerLink]="['/login']"
-                routerLinkActive="active"
-                class="user__log-out" *ngIf="!this.auth.isAutorized">LOGIN
-        </button>
-    </section>
+    <div *ngSwitchCase="true">
+        <div class="user__avatar"></div>
+        <section class="user__info">
+            <span class="user__name">{{user}} </span>
+            <button (click)="doLogout()"
+                    class="user__log-out">Log out
+            </button>
+        </section>
+    </div>
 
+    <div *ngSwitchDefault>
+        <section class="user__info">
+            <span class="user__name">Incognito </span>
+            <button (click)="this.doLogin()"
+                    class="user__log-out">LOGIN
+            </button>  <!--[routerLink]="['/login']" *todo -->
+        </section>
+    </div>
 
     <button [routerLink]="['/admin']"
             [class.disable]="!this.auth.isAutorized"
-            style="color:orange; border: 2px solid orange; margin: 25px; padding: 10px;"> ADMIN
+            style="color:orange; border: 2px solid orange; margin: 25px; padding: 10px;"> ADMIN PANEL
     </button>
 
 </section>

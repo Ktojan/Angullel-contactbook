@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { CONTACTS } from '../shared/contacts.data';
 import { rezervCONTACTS} from '../shared/contacts.data';
 import { Contact }    from '../contact';
+import { ContactsService } from '../shared/contacts.service';
 import {CategoriesService} from '../shared/categories.service';
 import { Router} from '@angular/router';
 
@@ -16,6 +17,7 @@ export class ContactFormComponent implements OnInit {
     categories;
 
     constructor(private router: Router,
+                private contactsService: ContactsService,
                 private categoriesService: CategoriesService) {
     }
 
@@ -25,12 +27,21 @@ export class ContactFormComponent implements OnInit {
     }
 
     onSubmit() {
-        alert("New contact " + this.model.surname + " was created!");
-        let lStor = window.localStorage;
-        let strModel = JSON.stringify(this.model);
-        lStor.setItem(this.model.surname,strModel);
-        let newUser = JSON.parse(lStor.getItem('first'));
-        if (rezervCONTACTS.length !== 0) rezervCONTACTS.shift();
-        this.router.navigate(['/contacts']);
+        this.contactsService.postContact(this.model)
+           // .subscribe(obj => console.log(obj))
+        /*let strModel = JSON.stringify(this.model);
+        lStor.setItem(this.model.surname,strModel);*/
+        //this.router.navigate(['/contacts']);
+    }
+
+    getImage(image: string) {
+        const nameStart = image.lastIndexOf('\\');
+        image = image.slice(nameStart+1);
+        console.log(image);
+        this.model['image'] = image;
+        /*var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://194.87.232.68:8081/api/files/' + image, true);
+        xhr.withCredentials = true;
+        xhr.send();*/
     }
 }

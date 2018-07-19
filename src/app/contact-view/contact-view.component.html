@@ -1,6 +1,6 @@
 <section class="contact-view">
-    <section class="contact-view__button-box"
-             [routerLink]="['/contact/', this.actualContact.surname, 'edit']">
+    <section class="contact-view__button-box">
+             <!--[routerLink]="['/contact/', this.actualContact.surname, 'edit']"-->
         <button class="contact-view__edit-button">  <!--редактировать-->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469.331 469.331">
                 <path fill="currentColor"
@@ -18,29 +18,29 @@
 
     <section class="contact-view__fields-box">
         <section class="contact-view__main-info">
-            <div class="contact-view__avatar"
-                 [ngStyle]="{'background-image': 'url(' + this.actualContact.url + ')'}"></div>
+            <div class="contact-view__avatar"></div>
+                <!-- [ngStyle]="{'background-image': 'url(' + this.actualContact.url + ')'}"-->
 
             <section class="contact-view__fields-wrapper">
                 <section class="contact-view__name-wrapper">
                     <span class="contact-view__name">{{this.actualContact.name}} </span> &nbsp;
                     <span class="contact-view__name">{{this.actualContact.surname}}</span>
                 </section>
-                <div class="contact-view__description">{{this.actualContact.desc}}</div>
+                <div class="contact-view__description">{{this.actualContact.position}}</div>
             </section>
         </section>
 
-        <div class="contact-view__field" *ngIf="this.actualContact.birthday">
+        <div class="contact-view__field"> <!--*ngIf="this.actualContact.bornDate"-->
             <span class="contact-view__field-name">Birthday</span>
-            <span class="contact-view__field-text">{{this.actualContact.birthday}}</span> <!--*todo  | date: longDate-->
+            <span class="contact-view__field-text">{{this.actualContact.bornDate | date: longDate}}</span>
         </div>
-        <div class="contact-view__field" *ngIf="this.actualContact.email">
+        <div class="contact-view__field" *ngIf="this.actualContact.email[0]">
             <span class="contact-view__field-name">Email</span>
-            <span class="contact-view__field-text">{{this.actualContact.email}}</span>
+            <span class="contact-view__field-text">{{this.actualContact.email[0]}}</span>
         </div>
         <div class="contact-view__field" *ngIf="this.actualContact.phone">
             <span class="contact-view__field-name">Phone</span>
-            <span class="contact-view__field-text">{{this.actualContact.phone}}</span>
+            <span class="contact-view__field-text">{{this.actualContact.phone[0].value}}</span>
         </div>
         <div class="contact-view__field" *ngIf="this.actualContact.information">
             <span class="contact-view__field-name">Information</span>

@@ -1,7 +1,7 @@
 export class Contact {
     constructor(public surname: string,
                 public name: string,
-                public desc: string,
+                public position: string,
                 public url?: string,
                 public phone?: string,
                 public email?: string,
@@ -12,7 +12,7 @@ export class Contact {
                 public categories?: any) {
         this.surname= surname;
         this.name= name;
-        this.desc= desc;
+        this.position= position;
         this.url= url;
         this.phone= phone;
         this.email= email;

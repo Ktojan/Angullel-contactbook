@@ -25,13 +25,13 @@
             <section class="contact-form__fields-wrapper">
                 <label class="form-group contact-form__label contact-form__label--half">
                     <span class="contact-form__label-text">Name</span>
-                    <input type="text" class="contact-form__input form-control" value="Some guy"
+                    <input type="text" class="contact-form__input form-control" value="karpovich.andrey"
                            #name>
                 </label>
 
                 <label class="contact-form__label contact-form__label--half">
                     <span class="contact-form__label-text">Password</span>
-                    <input type="text" class="contact-form__input  form-control" value="p"
+                    <input type="text" class="contact-form__input  form-control" value="***"
                            #password>
                 </label>
             </section>
@@ -39,8 +39,7 @@
     </section>
 
     <div class="contact-form__buttons-box">
-        <button
-                class="contact-form__button contact-form__button--main"
+        <button  class="contact-form__button contact-form__button--main"
                 (click)="doLogin(name.value, password.value);">Submit
         </button>
     </div>

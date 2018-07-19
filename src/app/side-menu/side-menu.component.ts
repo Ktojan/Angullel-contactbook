@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoriesService} from '../shared/categories.service';
 import {ContactsService} from '../shared/contacts.service';
+import { catchError, map, tap, take } from 'rxjs/operators';
 
 
 @Component({
@@ -9,22 +10,29 @@ import {ContactsService} from '../shared/contacts.service';
     styleUrls: ['./side-menu.component.css']
 })
 export class SideMenuComponent implements OnInit {
-    categories: string[];
+    categories;
     contacts: Object[];
     contactsWithAge: Object[];
     showCategories = true;
     showBdays = false;
 
     constructor(private categoriesService: CategoriesService,
-                private contactsService: ContactsService) { }
+                private contactsService: ContactsService) {
+    }
 
     ngOnInit() {
-        this.categories = this.categoriesService.getCategories();
-        this.contacts = this.contactsService.getContacts();
-        this.contacts.forEach(function (item) {
-            if (item['birthday']) item['age'] = 2018 - item['birthday'].slice(-4)
-        });  // *todo сделать реальный расчет возраста
-        this.contactsWithAge = this.contacts.filter(c => c['birthday']);
+
+         this.categoriesService.getCategories()
+             .pipe(
+                 take(3),
+                 tap(cont => console.log(cont))
+                  /*tap(h => {
+                     const outcome = h ? `fetched` : `did not find`;
+                     this.log(`${outcome} hero id=${id}`);
+                 }),
+                 catchError(this.handleError<Hero>(`getHero id=${id}`))*/
+             )
+             .subscribe(data => this.categories = data);
     }
 
     toggleView(item) {

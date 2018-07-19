@@ -10,9 +10,5 @@ import { CONTACTS } from './shared/contacts.data';
 export class AppComponent implements OnInit {
 
   ngOnInit() {
-      CONTACTS.forEach(contact => {
-          let sItem = JSON.stringify(contact);
-          localStorage.setItem(contact.surname,sItem);
-      });
   }
 }

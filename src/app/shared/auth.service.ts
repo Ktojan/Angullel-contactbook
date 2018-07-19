@@ -8,7 +8,7 @@ export class AuthService {
   constructor() { }
 
     login(username, pass) {
-        if (username === 'Some guy' && pass === 'p') {
+        if (username === 'karpovich.andrey' && pass === '***') {
             this.isAutorized = true;
             return true;
         }

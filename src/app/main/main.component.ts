@@ -13,6 +13,6 @@ export class MainComponent implements OnInit {
     constructor(private contactsService: ContactsService) { }
 
     ngOnInit() {
-        this.contacts = this.contactsService.getContacts();
+      // this.contacts = this.contactsService.getContacts();
     }
 }
