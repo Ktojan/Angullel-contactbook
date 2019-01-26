@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoriesService} from '../shared/categories.service';
 import {ContactsService} from '../shared/contacts.service';
-import { catchError, map, tap, take } from 'rxjs/operators';
+import {map, tap, take } from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -17,22 +18,33 @@ export class SideMenuComponent implements OnInit {
     showBdays = false;
 
     constructor(private categoriesService: CategoriesService,
-                private contactsService: ContactsService) {
+                private http: HttpClient) {
     }
 
     ngOnInit() {
 
          this.categoriesService.getCategories()
              .pipe(
-                 take(3),
-                 tap(cont => console.log(cont))
-                  /*tap(h => {
-                     const outcome = h ? `fetched` : `did not find`;
-                     this.log(`${outcome} hero id=${id}`);
-                 }),
-                 catchError(this.handleError<Hero>(`getHero id=${id}`))*/
+                 take(3)
              )
              .subscribe(data => this.categories = data);
+    }
+
+    byCategory(category) {
+
+            this.contacts = [];
+            let getCont = this.http.get('http://194.87.232.68:8081/api/phonebook?category=5ad52c0fde20ab200b82133c', {withCredentials: true})
+                .pipe(
+                    map(contArray => {
+                        let w = 0;
+                        while (contArray[w]) {
+                            this.contacts.push(contArray[w]);
+                            w++;
+                        }
+                       // return this.contacts;
+                    })
+                );
+            getCont.subscribe();
     }
 
     toggleView(item) {

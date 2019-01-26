@@ -48,7 +48,8 @@
                     (click)="contact.showContactEditMenu = !contact.showContactEditMenu"
                     routerLink='/create'>Edit
             </button>
-            <button class="contact-card__menu-item">Delete</button>
+            <button class="contact-card__menu-item"
+                    (click)="deleteContact(contact)">Delete</button>
             <button class="contact-card__menu-item"
                     (click)="contact.showCategoriesList = !contact.showCategoriesList">Add to category
             </button>
@@ -56,7 +57,7 @@
             <div *ngIf="contact.showCategoriesList">
                 <button class="contact-card__menu-item"
                         *ngFor="let category of categories"
-                        [hidden]="contact.categories.includes(category)"
+                        [hidden]="contact.category.includes(category)"
                         (click)="addToCategory(contact, category); contact.showContactEditMenu = !contact.showContactEditMenu">
                     {{category}}
                 </button>

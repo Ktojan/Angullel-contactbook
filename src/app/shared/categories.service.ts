@@ -6,20 +6,37 @@ import {catchError, tap, map} from 'rxjs/operators';
 @Injectable()
 export class CategoriesService {
 
-    CATEGORIES =[];
+    CATEGORIES = [];
 
     constructor(private http: HttpClient) {
     }
 
     getCategories() {
-
-        return this.http.get('http://194.87.232.68:8081/api/categories?')
+        this.CATEGORIES = [];
+        return this.http.get('http://phonebook.hillel.it/api/categories?')
             .pipe(
                 map(catArr => {
-                    for (let s=0; s < 3; s++) this.CATEGORIES.push(catArr[s]['name']);
+                    for (let s = 0; s < 3; s++) this.CATEGORIES.push(catArr[s]['name']);
                     return this.CATEGORIES;
                 })
-               // catchError(error => console.log(error))
+                // catchError(error => console.log(error))
             );
+    }
+
+    getCategoryId(catName) {
+        return this.http.get('http://phonebook.hillel.it/api/categories?')
+            .pipe(
+                map(catArr => {
+                    if (catName) {
+                        for (let s = 0; s < 3; s++) { //catArr.length
+                            if (catArr[s]['name'] === catName)
+                            return catArr[s]['_id'];
+                        }
+                    } else {
+                        return ''
+                    }
+                })
+            )
+
     }
 }

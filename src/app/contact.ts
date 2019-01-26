@@ -9,7 +9,7 @@ export class Contact {
                 public instagram?: string,
                 public birthday?: string,
                 public information?: string,
-                public categories?: any) {
+                public category?: any) {
         this.surname= surname;
         this.name= name;
         this.position= position;
@@ -20,6 +20,6 @@ export class Contact {
         this.instagram= instagram;
         this.birthday= birthday;
         this.information= information;
-        this.categories= categories;
+        this.category= category;
     }
 }

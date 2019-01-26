@@ -17,7 +17,7 @@
                  *ngFor="let category of categories">
                 <button class="groups-list__item"
                         [routerLink]="['/contacts', category]"
-                        routerLinkActive="active">
+                        routerLinkActive="active"> <!--(click)="byCategory(category)"  -->
                     {{category}}
                 </button>
             </div>

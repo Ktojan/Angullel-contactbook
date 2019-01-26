@@ -40,11 +40,11 @@ export class UserComponent implements OnInit {
 
 
     doLogin() {
-        let url  = 'http://194.87.232.68:8081/api/users/login',
-            data = {"email":"karpovich.andrey@gmail.com","password":"kilo"};
+        let url = 'http://phonebook.hillel.it/api/users/login',
+            data = { "email": "karpovich.andrey@gmail.com", "password":"kilogramm"};
         return this.http.post(url, data, httpOptions)
             .subscribe();
-    }
+    }    
 
     doLogout() {
         if (confirm('Are you sure you want to log out?')) this.auth.isAutorized = false;
