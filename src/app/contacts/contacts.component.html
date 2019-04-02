@@ -22,7 +22,8 @@
         <!--    contacts | contactPipeFilter categoryContacts  filteredContacts  -->
 
         <div class="contact-card__avatar"
-             [ngStyle]="{'background-image':'../../assets/img/' + contact.surname + '.jpg'}"></div> <!-- A mock request because of server's issue with img storing-->
+             [ngStyle]="{'background-image': 'url(../../assets/img/' + contact.surname + '.jpg)'}">
+          </div> <!-- A mock request because of server's issue with img storing-->
         <div class="contact-card__info">
             <button class="contact-card__btn"
                     (click)="this.router.navigate(['/contact', contact.surname, {id: contact._id}]);">

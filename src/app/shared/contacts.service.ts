@@ -23,7 +23,6 @@ export class ContactsService {
     }
 
     getContacts(catId) {
-        console.log(catId);
         let url = catId ? 'http://phonebook.hillel.it/api/phonebook?category=' + catId : 'http://phonebook.hillel.it/api/phonebook';
         this.contacts = [];
         return this.http.get(url, {withCredentials: true})

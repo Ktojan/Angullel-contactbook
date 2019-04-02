@@ -9,25 +9,20 @@ import {ActivatedRoute} from '@angular/router';
     styleUrls: ['./edit-contact.component.css']
 })
 export class EditContactComponent implements OnInit {
-    contacts = [];
     actualContact: Object;
+    loaded = false;
 
     constructor(private contactsService: ContactsService,
                 private activatedRoute: ActivatedRoute) {
     }
 
     ngOnInit() {
-        //this.contacts = this.contactsService.getContacts();
-        this.grabActualContact(this.activatedRoute.snapshot.params['id']);
-    }
-
-    grabActualContact(surname) {
-        let self = this;
-        this.contacts.forEach(function (item) {
-            if (item['surname'] === surname) {
-                self.actualContact = item;
-                return;
-            }
+        const id = this.activatedRoute.snapshot.params['id'];
+        this.contactsService.getOneContact(id)
+            .subscribe(obj => {
+                this.actualContact = obj;
+                this.loaded = true;
+                console.dir(this.actualContact);
         });
     }
 }
