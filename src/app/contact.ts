@@ -2,14 +2,15 @@ export class Contact {
     constructor(public surname: string,
                 public name: string,
                 public position: string,
-                public url?: string,
-                public phone?: string,
-                public email?: string,
+                public url?: string,  //image
+                public phone?: string, /**[{ "_id": "58a446fcc26aaf13460533bd",    "category": "mobile",    "value": "+38096*******"}]*/
+                public email?: string,  //[ "y.chikhrai@shipnext.com" ]
                 public facebook?: string,
                 public instagram?: string,
-                public birthday?: string,
+                public bornDate?: string,  
                 public information?: string,
-                public category?: any) {
+                public category?: string
+               ) {
         this.surname= surname;
         this.name= name;
         this.position= position;
@@ -18,7 +19,7 @@ export class Contact {
         this.email= email;
         this.facebook= facebook;
         this.instagram= instagram;
-        this.birthday= birthday;
+        this.bornDate = bornDate;
         this.information= information;
         this.category= category;
     }

@@ -2,8 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app"
+    "\\src\\app",
+    "\\src\\app\\contact-form",
+    "\\src\\app\\shared",
+    "\\src\\app\\side-menu",
+    "\\src\\assets",
+    "\\src\\assets\\img"
   ],
-  "SelectedNode": "\\src\\app\\main",
+  "SelectedNode": "\\src\\app\\shared\\contacts.service.ts",
   "PreviewInSolutionExplorer": false
 }

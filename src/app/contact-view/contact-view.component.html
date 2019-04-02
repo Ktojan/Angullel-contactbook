@@ -26,31 +26,27 @@
                     <span class="contact-view__name">{{this.actualContact.name}} </span> &nbsp;
                     <span class="contact-view__name">{{this.actualContact.surname}}</span>
                 </section>
-                <div class="contact-view__description">{{this.actualContact.position}}</div>
+                <div class="contact-view__description">In brief: {{this.actualContact.position}}</div>
             </section>
         </section>
 
-        <div class="contact-view__field"> <!--*ngIf="this.actualContact.bornDate"-->
+        <div class="contact-view__field">
             <span class="contact-view__field-name">Birthday</span>
             <span class="contact-view__field-text">{{this.actualContact.bornDate | date: longDate}}</span>
         </div>
-        <div class="contact-view__field" *ngIf="this.actualContact.email[0]">
+        <div class="contact-view__field">
             <span class="contact-view__field-name">Email</span>
             <span class="contact-view__field-text">{{this.actualContact.email[0]}}</span>
         </div>
-        <div class="contact-view__field" *ngIf="this.actualContact.phone">
+        <div class="contact-view__field">
             <span class="contact-view__field-name">Phone</span>
             <span class="contact-view__field-text">{{this.actualContact.phone[0].value}}</span>
         </div>
-        <div class="contact-view__field" *ngIf="this.actualContact.information">
+        <div class="contact-view__field">  <!--*ngIf="this.actualContact.information">-->
             <span class="contact-view__field-name">Information</span>
             <span class="contact-view__field-text">{{this.actualContact.information}}</span>
         </div>
-        <div class="contact-view__field" *ngIf="this.actualContact.facebook || this.actualContact.instagram">
-            <span class="contact-view__field-name">Social media</span>
-            <span class="contact-view__field-text">{{this.actualContact.facebook}}</span>&nbsp;
-            <span class="contact-view__field-text">{{this.actualContact.instagram}}</span>
-        </div>
+       
 
     </section>
 </section>

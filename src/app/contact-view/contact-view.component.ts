@@ -17,7 +17,9 @@ export class ContactViewComponent implements OnInit {
   ngOnInit() {
       const id = this.activatedRoute.snapshot.params['id'];
       this.contactsService.getOneContact(id)
-          .subscribe(obj => this.actualContact = obj);
-      console.log(this.actualContact);
+          .subscribe(obj => {
+              this.actualContact = obj;
+              console.log(this.actualContact);
+          });
   }
 }

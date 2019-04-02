@@ -3,7 +3,8 @@ import { CONTACTS } from '../shared/contacts.data';
 import { rezervCONTACTS} from '../shared/contacts.data';
 import { Contact }    from '../contact';
 import { ContactsService } from '../shared/contacts.service';
-import {CategoriesService} from '../shared/categories.service';
+import { CategoriesService } from '../shared/categories.service';
+import { map, tap, take } from 'rxjs/operators';
 import { Router} from '@angular/router';
 
 @Component({
@@ -22,15 +23,19 @@ export class ContactFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.categories = this.categoriesService.getCategories();
+        this.categoriesService.getCategories()
+            .pipe(
+            take(3)
+            )
+            .subscribe(data => { this.categories = data; console.table(this.categories); });
         this.model = rezervCONTACTS[0];  //несколько заготовок, данные из которых подставляются в инпуты при создании нового контакта
     }
 
     onSubmit() {
+        console.log(this.model);
         this.contactsService.postContact(this.model)
-           // .subscribe(obj => console.log(obj))
-        /*let strModel = JSON.stringify(this.model);
-        lStor.setItem(this.model.surname,strModel);*/
+           // .subscribe(obj => console.log(obj));
+        //lStor.setItem(this.model.surname,strModel);
         //this.router.navigate(['/contacts']);
     }
 

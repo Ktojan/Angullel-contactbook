@@ -34,7 +34,7 @@ export class ContactsService {
                         this.contacts.push(contArray[s]);
                         s++;
                     }
-                    console.log(this.contacts);
+                    console.table(this.contacts);
                     return this.contacts;
                 })
             )
@@ -49,8 +49,8 @@ export class ContactsService {
 
     postContact(formData) {
         let url = 'http://phonebook.hillel.it/api/phonebook',
-            jsonData = JSON.stringify(formData);
-        console.log(jsonData);
+            stringData = JSON.stringify(formData);
+        console.log(stringData);
         const xhr = new XMLHttpRequest();
         xhr.open('POST', url, true);
         //xhr.setRequestHeader('Content-Type', 'application/json');
@@ -62,7 +62,7 @@ export class ContactsService {
             }
             ;
         };
-        xhr.send('{}');
+        xhr.send(stringData);
     }
 
     editContact(id, formData) {
