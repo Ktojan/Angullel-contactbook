@@ -9,6 +9,7 @@ import { ActivatedRoute} from '@angular/router';
 })
 export class ContactViewComponent implements OnInit {
     actualContact: Object;
+    public load = false;
 
     constructor(private contactsService: ContactsService,
                 private activatedRoute:ActivatedRoute) {
@@ -17,7 +18,10 @@ export class ContactViewComponent implements OnInit {
   ngOnInit() {
       const id = this.activatedRoute.snapshot.params['id'];
       this.contactsService.getOneContact(id)
-          .subscribe(obj => this.actualContact = obj);
-      console.log(this.actualContact);
+          .subscribe(obj => {
+              this.actualContact = obj;
+              console.log(this.actualContact);
+              this.load = true;
+          });
   }
 }

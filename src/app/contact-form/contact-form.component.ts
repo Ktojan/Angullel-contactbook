@@ -3,7 +3,8 @@ import { CONTACTS } from '../shared/contacts.data';
 import { rezervCONTACTS} from '../shared/contacts.data';
 import { Contact }    from '../contact';
 import { ContactsService } from '../shared/contacts.service';
-import {CategoriesService} from '../shared/categories.service';
+import { CategoriesService } from '../shared/categories.service';
+import { map, tap, take } from 'rxjs/operators';
 import { Router} from '@angular/router';
 
 @Component({
@@ -13,7 +14,7 @@ import { Router} from '@angular/router';
 })
 export class ContactFormComponent implements OnInit {
 
-    model: Contact;
+    model: Contact;  // an object for data from the Form
     categories;
 
     constructor(private router: Router,
@@ -22,26 +23,28 @@ export class ContactFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.categories = this.categoriesService.getCategories();
-        this.model = rezervCONTACTS[0];  //несколько заготовок, данные из которых подставляются в инпуты при создании нового контакта
+        this.categoriesService.getCategories()
+            .pipe(
+            take(3)
+            )
+            .subscribe(data => { this.categories = data; console.table(this.categories); });
+        this.model = rezervCONTACTS[2];  //несколько заготовок, данные из которых подставляются в инпуты при создании нового контакта
     }
 
     onSubmit() {
         this.contactsService.postContact(this.model)
-           // .subscribe(obj => console.log(obj))
-        /*let strModel = JSON.stringify(this.model);
-        lStor.setItem(this.model.surname,strModel);*/
-        //this.router.navigate(['/contacts']);
+        //    .subscribe(obj => console.log(obj));
+        this.router.navigate(['/contacts']);
     }
 
-    getImage(image: string) {
-        const nameStart = image.lastIndexOf('\\');
-        image = image.slice(nameStart+1);
-        console.log(image);
-        this.model['image'] = image;
-        /*var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://194.87.232.68:8081/api/files/' + image, true);
-        xhr.withCredentials = true;
-        xhr.send();*/
-    }
+    //getImage(image: string) {
+    //    const nameStart = image.lastIndexOf('\\');
+    //    image = image.slice(nameStart+1);
+    //    console.log(image);
+    //    this.model['image'] = image;
+    //    /*var xhr = new XMLHttpRequest();
+    //    xhr.open('POST', 'http://194.87.232.68:8081/api/files/' + image, true);
+    //    xhr.withCredentials = true;
+    //    xhr.send();*/
+    //}
 }

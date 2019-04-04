@@ -48,7 +48,7 @@ export class ContactsComponent implements OnInit {
            .subscribe(resp => {
                me.contactsService.getContacts(resp)
                    .subscribe(obj => {
-                       me.filteredContacts = obj; console.log(me.filteredContacts);
+                       me.filteredContacts = obj;
                    });
            });
 

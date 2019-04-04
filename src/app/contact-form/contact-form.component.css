@@ -192,6 +192,10 @@
     width: calc(50% - 8px);
 }
 
+.contact-form__label--third {
+   width: calc(32% - 8px);
+}
+
 @media (max-width: 950px) and (min-width: 767px) {
     .contact-form__label--half {
         width: 100%;
@@ -204,8 +208,9 @@
     }
 }
 
-.contact-form__label--half:first-child {
-    margin-right: 16px;
+.contact-form__label--half:first-child,
+.contact-form__label--third:first-child {
+  margin-right: 16px;
 }
 
 @media (max-width: 950px) and (min-width: 767px) {

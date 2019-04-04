@@ -41,11 +41,11 @@
                      [ngStyle]="{'background-image': 'url(' + model.url + ')'}"></div>
             </section>-->
 
-            <form (ngSubmit)="getImage(imgName.value)"
+            <!--<form (ngSubmit)="getImage(imgName.value)"
              action="/api/files" enctype="multipart/form-data" method="POST">
                 <input type="file" name="avatar" #imgName />
                 <input type="submit" value="Upload Photo"/>
-            </form>
+            </form>-->
 
             <section class="contact-form__fields-wrapper">
                 <label class="form-group contact-form__label contact-form__label--half">
@@ -71,9 +71,20 @@
                     </div>
                 </label>
 
+              <label class="contact-form__label">
+                <span class="contact-form__label-text">Category</span>
+                <select type="tel" class="contact-form__input form-control" id="category"
+                        style="width: 16%; font-size: 1em"
+                        required>
+                  <option *ngFor="let category of categories"
+                          [value]="category">{{category}}</option>
+                </select>
+              </label>
+
+              
                 <label class="contact-form__label">
-                    <span class="contact-form__label-text">Position</span>
-                    <textarea class="contact-form__textarea form-control" rows="2"
+                    <span class="contact-form__label-text">Position (in brief)</span>
+                    <textarea class="contact-form__textarea form-control" rows="1"
                               [(ngModel)]="model.position" name="position"
                               #position="ngModel"
                               required></textarea>
@@ -84,14 +95,12 @@
             </section>
         </section>
 
-       <!-- <label class="contact-form__label">
-            <span class="contact-form__label-text">Categories</span>
-            <select type="tel" class="contact-form__input form-control" id="category"
-                    style="width: 16%; font-size: 1em"
-                    required>
-                <option *ngFor="let category of categories" [value]="category">{{category}}</option>
-            </select>
-        </label>-->
+        <label class="contact-form__label">
+          <span class="contact-form__label-text">Birthday</span>
+          <input type="text" class="contact-form__input form-control"
+                 [(ngModel)]="model.bornDate" name="bornDate"
+                 #bornDate="ngModel">
+        </label>
 
         <label class="contact-form__label">
             <span class="contact-form__label-text">Phone</span>
@@ -105,37 +114,19 @@
                    [(ngModel)]="model.email" name="email"
                    #email="ngModel">
         </label>
-        <label class="contact-form__label">
-            <span class="contact-form__label-text">Birthday</span>
-            <input type="text" class="contact-form__input form-control"
-                   [(ngModel)]="model.birthday" name="birthday"
-                   #birthday="ngModel">
-        </label>
+        
         <label class="contact-form__label">
             <span class="contact-form__label-text">Information</span>
             <textarea class="contact-form__textarea form-control" rows="3"
                       [(ngModel)]="model.information" name="information"
                       #information="ngModel"></textarea>
         </label>
-        <label class="contact-form__label">
-            <span class="contact-form__label-text">Instagram</span>
-            <input type="text" class="contact-form__input form-control"
-                   [(ngModel)]="model.instagram" name="instagram"
-                   #instagram="ngModel">
-        </label>
-
-        <label class="contact-form__label">
-            <span class="contact-form__label-text">Facebook</span>
-            <input type="text" class="contact-form__input form-control"
-                   [(ngModel)]="model.facebook" name="facebook"
-                   #facebook="ngModel">
-        </label>
     </section>
 
     <div class="contact-form__buttons-box">
         <button type="submit"
-                class="contact-form__button contact-form__button--main"
-                [class.disable]="contactForm.form.invalid">Create!
+                class="contact-form__button contact-form__button--main">Create!
+      <!--[class.disable]="contactForm.form.invalid"-->
         </button>
     </div>
 </form>

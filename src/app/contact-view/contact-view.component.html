@@ -1,56 +1,59 @@
-<section class="contact-view">
+<ng-container *ngIf="load">
+  <section class="contact-view">
     <section class="contact-view__button-box">
-             <!--[routerLink]="['/contact/', this.actualContact.surname, 'edit']"-->
-        <button class="contact-view__edit-button">  <!--редактировать-->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469.331 469.331">
-                <path fill="currentColor"
-                      d="M438.931 30.403c-40.4-40.5-106.1-40.5-146.5 0l-268.6 268.5c-2.1 2.1-3.4 4.8-3.8 7.7l-19.9 147.4c-.6 4.2.9 8.4 3.8 11.3 2.5 2.5 6 4 9.5 4 .6 0 1.2 0 1.8-.1l88.8-12c7.4-1 12.6-7.8 11.6-15.2-1-7.4-7.8-12.6-15.2-11.6l-71.2 9.6 13.9-102.8 108.2 108.2c2.5 2.5 6 4 9.5 4s7-1.4 9.5-4l268.6-268.5c19.6-19.6 30.4-45.6 30.4-73.3s-10.8-53.7-30.4-73.2zm-141.3 33l45.1 45.1-245.1 245.1-45.1-45.1 245.1-245.1zm-136.7 353.4l-44.1-44.1 245.1-245.1 44.1 44.1-245.1 245.1zm263.9-264.4l-107.9-107.9c13.7-11.3 30.8-17.5 48.8-17.5 20.5 0 39.7 8 54.2 22.4s22.4 33.7 22.4 54.2c0 18.1-6.2 35.1-17.5 48.8z"/>
-            </svg>
-        </button>
-        <!-- закрыть -->
-        <button class="contact-view__close-button"
-                [routerLink]="['/contacts']">           <!--*todo сделать, чтобы возвращалось на предыдущую страницу-->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42">
-                <path fill="currentColor" d="M42 20H22V0h-2v20H0v2h20v20h2V22h20z"/>
-            </svg>
-        </button>
+      <!-- edit-->
+      <button class="contact-view__edit-button"
+              [routerLink]="['/contact/', this.actualContact.surname, 'edit', {id: this.actualContact._id}]">
+        <!--(click)="this.router.navigate(['/contact', contact.surname, {id: contact._id}]);">-->
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469.331 469.331">
+          <path fill="currentColor"
+                d="M438.931 30.403c-40.4-40.5-106.1-40.5-146.5 0l-268.6 268.5c-2.1 2.1-3.4 4.8-3.8 7.7l-19.9 147.4c-.6 4.2.9 8.4 3.8 11.3 2.5 2.5 6 4 9.5 4 .6 0 1.2 0 1.8-.1l88.8-12c7.4-1 12.6-7.8 11.6-15.2-1-7.4-7.8-12.6-15.2-11.6l-71.2 9.6 13.9-102.8 108.2 108.2c2.5 2.5 6 4 9.5 4s7-1.4 9.5-4l268.6-268.5c19.6-19.6 30.4-45.6 30.4-73.3s-10.8-53.7-30.4-73.2zm-141.3 33l45.1 45.1-245.1 245.1-45.1-45.1 245.1-245.1zm-136.7 353.4l-44.1-44.1 245.1-245.1 44.1 44.1-245.1 245.1zm263.9-264.4l-107.9-107.9c13.7-11.3 30.8-17.5 48.8-17.5 20.5 0 39.7 8 54.2 22.4s22.4 33.7 22.4 54.2c0 18.1-6.2 35.1-17.5 48.8z" />
+        </svg>
+      </button>
+      <!-- close -->
+      <button class="contact-view__close-button"
+              [routerLink]="['/contacts']">
+        <!--*todo сделать, чтобы возвращалось на предыдущую страницу-->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42">
+          <path fill="currentColor" d="M42 20H22V0h-2v20H0v2h20v20h2V22h20z" />
+        </svg>
+      </button>
     </section>
 
     <section class="contact-view__fields-box">
-        <section class="contact-view__main-info">
-            <div class="contact-view__avatar"></div>
-                <!-- [ngStyle]="{'background-image': 'url(' + this.actualContact.url + ')'}"-->
+      <section class="contact-view__main-info">
+        <div class="contact-view__avatar"
+             [ngStyle]="{'background-image': 'url(../../assets/img/' + this.actualContact.surname + '.jpg)'}">  
+        </div>
 
-            <section class="contact-view__fields-wrapper">
-                <section class="contact-view__name-wrapper">
-                    <span class="contact-view__name">{{this.actualContact.name}} </span> &nbsp;
-                    <span class="contact-view__name">{{this.actualContact.surname}}</span>
-                </section>
-                <div class="contact-view__description">{{this.actualContact.position}}</div>
-            </section>
+        <section class="contact-view__fields-wrapper">
+          <section class="contact-view__name-wrapper">
+            <span class="contact-view__name">{{this.actualContact.name}} </span> &nbsp;
+            <span class="contact-view__name">{{this.actualContact.surname}}</span>
+          </section>
+          <div class="contact-view__description">Brief: {{this.actualContact.position}}</div>
         </section>
+      </section>
 
-        <div class="contact-view__field"> <!--*ngIf="this.actualContact.bornDate"-->
-            <span class="contact-view__field-name">Birthday</span>
-            <span class="contact-view__field-text">{{this.actualContact.bornDate | date: longDate}}</span>
-        </div>
-        <div class="contact-view__field" *ngIf="this.actualContact.email[0]">
-            <span class="contact-view__field-name">Email</span>
-            <span class="contact-view__field-text">{{this.actualContact.email[0]}}</span>
-        </div>
-        <div class="contact-view__field" *ngIf="this.actualContact.phone">
-            <span class="contact-view__field-name">Phone</span>
-            <span class="contact-view__field-text">{{this.actualContact.phone[0].value}}</span>
-        </div>
-        <div class="contact-view__field" *ngIf="this.actualContact.information">
-            <span class="contact-view__field-name">Information</span>
-            <span class="contact-view__field-text">{{this.actualContact.information}}</span>
-        </div>
-        <div class="contact-view__field" *ngIf="this.actualContact.facebook || this.actualContact.instagram">
-            <span class="contact-view__field-name">Social media</span>
-            <span class="contact-view__field-text">{{this.actualContact.facebook}}</span>&nbsp;
-            <span class="contact-view__field-text">{{this.actualContact.instagram}}</span>
-        </div>
-
+      <div class="contact-view__field" *ngIf="this.actualContact.bornDate">
+        <span class="contact-view__field-name">Birthday</span>
+        <span class="contact-view__field-text">{{this.actualContact.bornDate | date: longDate}}</span>
+      </div>
+      <div class="contact-view__field" *ngIf="this.actualContact.email[0]">
+        <span class="contact-view__field-name">Email</span>
+        <span class="contact-view__field-text"
+              *ngFor="let email of this.actualContact.email">{{email}}&nbsp;&nbsp;</span>
+      </div>
+      <div class="contact-view__field" *ngIf="this.actualContact.phone[0]">
+        <span class="contact-view__field-name">Phone(s)</span>
+        <span class="contact-view__field-text"
+              *ngFor="let phone of this.actualContact.phone">{{phone.value}}&nbsp;({{phone.category}})&nbsp;&nbsp;</span>
+      </div>
+      <div class="contact-view__field" *ngIf="this.actualContact.information">
+        <span class="contact-view__field-name">Information</span>
+        <span class="contact-view__field-text">{{this.actualContact.information}}</span>
+      </div>
     </section>
-</section>
+  </section>
+</ng-container>
