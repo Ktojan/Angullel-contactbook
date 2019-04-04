@@ -16,7 +16,9 @@
     </button>
 </header>
 
-<form class="contact-form" *ngIf="loaded">
+<form class="contact-form" *ngIf="loaded"
+      (ngSubmit)="onSubmit()"
+      #contactForm="ngForm">
     <section class="contact-form__wrapper">
         <button class="contact-form__close-button" [routerLink]="['/contacts']">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42">
@@ -32,45 +34,62 @@
             </div>
             <section class="contact-form__fields-wrapper">
                 <label class="contact-form__label contact-form__label--half">
-                    <span class="contact-form__label-text">Name</span>
+                    <span class="contact-form__label-text">Name (fixed)</span>
                     <input type="text"
                            class="contact-form__input"
-                           value="{{actualContact.name}}">
+                            [(ngModel)]="model.name" name="name"
+                           #name="ngModel"
+                           disabled>
                 </label>
 
                 <label class="contact-form__label contact-form__label--half">
-                    <span class="contact-form__label-text">Surname</span>
+                    <span class="contact-form__label-text">Surname (fixed)</span>
                     <input type="text" class="contact-form__input"
-                           value="{{actualContact.surname}}">
+                           [(ngModel)]="model.surname" name="surname"
+                           #surname="ngModel"
+                           disabled>
                 </label>
 
                 <label class="contact-form__label">
-                    <span class="contact-form__label-text">Description</span>
-                    <textarea class="contact-form__textarea" rows="1"
-                              value="{{actualContact.position}}"></textarea>
+                    <span class="contact-form__label-text">Description *</span>
+                    <input class="contact-form__input"
+                              [(ngModel)]="model.position" name="position"
+                              #position="ngModel"
+                              required>
                 </label>
             </section>
         </section>
       <label class="contact-form__label">
         <span class="contact-form__label-text">Birthday</span>
         <input type="text" class="contact-form__input"
-               value="{{actualContact.bornDate  | date: longDate }}">
+               [(ngModel)]="model.bornDate" name="bornDate"
+                 #bornDate="ngModel">
       </label>
 
-        <label class="contact-form__label" *ngFor="let phone of this.actualContact.phone">
+        <label class="contact-form__label" *ngFor="let phone of this.actualContact.phone"> <!--TODO-->
             <span class="contact-form__label-text" >Phone</span>
             <input type="tel" class="contact-form__input" value="{{phone.value}}">
-            <input type="tel" class="contact-form__input" value="{{phone.category}}">
+            <!--<input type="tel" class="contact-form__input" value="{{phone.category}}">-->
+            <select type="tel" class="contact-form__input form-control" id="phoneCategory"
+                  style="width: 35%; font-size: 1em">
+            <option *ngFor="let phoneCat of phoneCategories"
+                    [value]="phone.category"
+                    [selected]="phone.category === phoneCat">{{phoneCat}}</option>
+          </select>
         </label>
+      
+
       <label class="contact-form__label" *ngIf="this.actualContact.phone[0] === undefined">
         <span class="contact-form__label-text">Phone</span>
         <input type="tel" class="contact-form__input" placeholder="put a number">
         <input type="tel" class="contact-form__input" placeholder="choose a type">
       </label>
 
-        <label class="contact-form__label" *ngFor="let email of this.actualContact.email">
+        <label class="contact-form__label"> <!-- *ngFor="let email of this.actualContact.email" TODO-->
             <span class="contact-form__label-text">Email</span>
-            <input type="email" class="contact-form__input" value="{{email}}">
+            <input type="email" class="contact-form__input"
+                   [(ngModel)]="model.email" name="email"
+                    #email="ngModel">
         </label>
       <label class="contact-form__label" *ngIf="this.actualContact.email[0] === undefined">
         <span class="contact-form__label-text">Email</span>
@@ -80,12 +99,18 @@
         <label class="contact-form__label">
             <span class="contact-form__label-text">Information</span>
             <textarea class="contact-form__textarea" rows="5"
-                      value="{{actualContact.information}}"></textarea>
+                       [(ngModel)]="model.information" name="information"
+                      #information="ngModel"></textarea>
         </label>
     </section>
 
     <div class="contact-form__buttons-box">
-         <button class="contact-form__button contact-form__button--main">Save changes</button> <!--*todo-->
-         <button class="contact-form__button contact-form__button&#45;&#45;second">Delete contact</button> <!--*todo-->
+         <button class="contact-form__button contact-form__button--main"
+                 [class.disable]="!contactForm.form.valid"
+                 [disabled]="!contactForm.form.valid"
+                 type="submit">Save changes</button> 
+         <button class="contact-form__button contact-form__button--second"
+                 (click)="delete()">Delete contact</button>
+      <!-- Make delete not sending post request-->
     </div>
 </form>

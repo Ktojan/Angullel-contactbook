@@ -76,20 +76,12 @@
                 <select type="tel" class="contact-form__input form-control" id="category"
                         style="width: 16%; font-size: 1em"
                         required>
-                  <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                  <option *ngFor="let category of categories"
+                          [value]="category">{{category}}</option>
                 </select>
               </label>
 
-              <div class="groups-list"
-                   *ngFor="let category of categories">
-                <button class="groups-list__item"
-                        [routerLink]="['/contacts', category]"
-                        routerLinkActive="active">
-                  <!--(click)="byCategory(category)"  -->
-                  {{category}}
-                </button>
-              </div>
-
+              
                 <label class="contact-form__label">
                     <span class="contact-form__label-text">Position (in brief)</span>
                     <textarea class="contact-form__textarea form-control" rows="1"
@@ -103,6 +95,12 @@
             </section>
         </section>
 
+        <label class="contact-form__label">
+          <span class="contact-form__label-text">Birthday</span>
+          <input type="text" class="contact-form__input form-control"
+                 [(ngModel)]="model.bornDate" name="bornDate"
+                 #bornDate="ngModel">
+        </label>
 
         <label class="contact-form__label">
             <span class="contact-form__label-text">Phone</span>
@@ -116,12 +114,7 @@
                    [(ngModel)]="model.email" name="email"
                    #email="ngModel">
         </label>
-        <label class="contact-form__label">
-            <span class="contact-form__label-text">Birthday</span>
-            <input type="text" class="contact-form__input form-control"
-                   [(ngModel)]="model.bornDate" name="bornDate"
-                   #bornDate="ngModel">
-        </label>
+        
         <label class="contact-form__label">
             <span class="contact-form__label-text">Information</span>
             <textarea class="contact-form__textarea form-control" rows="3"
@@ -132,8 +125,8 @@
 
     <div class="contact-form__buttons-box">
         <button type="submit"
-                class="contact-form__button contact-form__button--main"
-                [class.disable]="contactForm.form.invalid">Create!
+                class="contact-form__button contact-form__button--main">Create!
+      <!--[class.disable]="contactForm.form.invalid"-->
         </button>
     </div>
 </form>

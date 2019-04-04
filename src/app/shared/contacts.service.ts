@@ -49,25 +49,23 @@ export class ContactsService {
     postContact(formData) {
         let url = 'http://phonebook.hillel.it/api/phonebook',
             stringData = JSON.stringify(formData);
-        console.log(stringData);
+        alert('Regretfully, creation/modifying of contacts is not available for now because the server doesnt allow CORS requests. This is data for creating/modifiying a contact: ' + stringData);
         const xhr = new XMLHttpRequest();
         xhr.open('POST', url, true);
-        //xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.withCredentials = true;
         xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 let id = JSON.parse(xhr.responseText)['id'];
                 this.editContact(id, formData);
-            }
-            ;
+            };
         };
-        xhr.send(stringData);
+        //xhr.send(stringData);
     }
 
     editContact(id, formData) {
         let url = 'http://phonebook.hillel.it/api/phonebook/' + id,
             data = `{}`;
-        console.log(url);
 
         /* this.http.put(url, JSON.stringify(data), {withCredentials: true, ContentType: 'application/json'}
          ).subscribe(function(data){

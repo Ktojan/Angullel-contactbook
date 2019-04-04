@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ContactsService} from '../shared/contacts.service';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Contact } from '../contact';
 
 
 @Component({
@@ -10,7 +11,9 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class EditContactComponent implements OnInit {
     actualContact: Object;
+    model: Object;  // an object for data from the Form
     loaded = false;
+    phoneCategories = ["mobile", "work", "home"];
 
     constructor(private contactsService: ContactsService,
                 private activatedRoute: ActivatedRoute) {
@@ -21,8 +24,17 @@ export class EditContactComponent implements OnInit {
         this.contactsService.getOneContact(id)
             .subscribe(obj => {
                 this.actualContact = obj;
-                this.loaded = true;
-                console.dir(this.actualContact);
+                this.model = obj;
+                this.loaded = true;                
         });
+    }
+
+    onSubmit() {
+        console.table(this.model);
+        this.contactsService.postContact(this.model)
+    }
+
+    delete() {
+        alert('All contacts have been deleted permanently!');
     }
 }
